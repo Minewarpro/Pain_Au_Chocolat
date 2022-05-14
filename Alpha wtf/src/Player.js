@@ -20,6 +20,8 @@ class Player {
         this.flagleft=false;
         this.flagright=false;
 
+        this.velocityPlayer = 300;
+
         this.initKeyboard();
 
 
@@ -125,41 +127,22 @@ class Player {
     }
 
     haut(){
-        this.player.setVelocityY(-300);
+        this.player.setVelocityY(this.velocityPlayer * -1);
     }
     bas(){
-        this.player.setVelocityY(300);
+        this.player.setVelocityY(this.velocityPlayer);
     }
     moveRight(){
-        this.player.setVelocityX(300);
+        this.player.setVelocityX(this.velocityPlayer);
         this.player.setFlipX(false);
     }
     moveLeft(){
-        this.player.setVelocityX(-300);
+        this.player.setVelocityX(this.velocityPlayer * -1);
         this.player.setFlipX(true);
 
     }
 
-    hautRight(){
-        this.player.setVelocityY(-200);
-        this.player.setVelocityX(200);
-        this.player.setFlipX(false);
-    }
-    basLeft(){
-        this.player.setVelocityY(200);
-        this.player.setVelocityX(-200);
-        this.player.setFlipX(true);
-    }
-    basRight(){
-        this.player.setVelocityX(200);
-        this.player.setVelocityY(200);
-        this.player.setFlipX(false);
-    }
-    hautLeft(){
-        this.player.setVelocityX(-200);
-        this.player.setVelocityY(-200);
-        this.player.setFlipX(true);
-    }
+
 
     moveLeftRelease(){
         // ralenti gauche
@@ -168,6 +151,7 @@ class Player {
                 // fais rien
                 break;
             case !this.qDown:
+                this.velocityPlayer = 300;
                 this.player.setVelocityX(0);
                 this.flagleft=true;
                 break;
@@ -180,6 +164,7 @@ class Player {
                 // fais rien
                 break;
             case !this.dDown:
+                this.velocityPlayer = 300;
                 this.player.setVelocityX(0);
                 this.flagright=true;
                 break;
@@ -192,6 +177,7 @@ class Player {
                 // fais rien
                 break;
             case !this.zDown:
+                this.velocityPlayer = 300;
                 this.player.setVelocityY(0);
                 this.flaghaut=true;
                 break;
@@ -204,64 +190,13 @@ class Player {
                 // fais rien
                 break;
             case !this.sDown:
+                this.velocityPlayer = 300;
                 this.player.setVelocityY(0);
                 this.flagbas=true;
                 break;
         }
     }
 
-    basLeftRelease(){
-        // ralenti gauche
-        switch(true){
-            case this.flagbasleft:
-                // fais rien
-                break;
-            case !this.qDown:
-                this.player.setVelocityX(0);
-                this.player.setVelocityY(0);
-                this.flagbasleft=true;
-                break;
-        }
-    }
-    hautRightRelease(){
-        // ralenti gauche
-        switch(true){
-            case this.flaghautright:
-                // fais rien
-                break;
-            case !this.dDown:
-                this.player.setVelocityX(0);
-                this.player.setVelocityY(0);
-                this.flaghautright=true;
-                break;
-        }
-    }
-    hautLeftRelease(){
-        // ralenti gauche
-        switch(true){
-            case this.flaghautleft:
-                // fais rien
-                break;
-            case !this.zDown:
-                this.player.setVelocityY(0);
-                this.player.setVelocityX(0);
-                this.flaghautleft=true;
-                break;
-        }
-    }
-    basRightRelease(){
-        // ralenti gauche
-        switch(true){
-            case this.flagbasright:
-                // fais rien
-                break;
-            case !this.sDown:
-                this.player.setVelocityY(0);
-                this.player.setVelocityX(0);
-                this.flagbasright=true;
-                break;
-        }
-    }
     stop(){
         this.player.setVelocityX(0);
         this.player.setVelocityY(0);
@@ -275,20 +210,32 @@ class Player {
                     this.Dash();
                     break;
                 case this.qDown && this.sDown:
-                    this.basLeft()
-                    this.flagbasleft=false;
+                    this.velocityPlayer = 200;
+                    this.bas();
+                    this.moveLeft();
+                    this.flagleft=false;
+                    this.flagbas=false;
                     break;
                 case this.dDown && this.sDown:
-                    this.basRight()
-                    this.flagbasright=false;
+                    this.velocityPlayer = 200;
+                    this.bas();
+                    this.moveRight();
+                    this.flagbas=false;
+                    this.flagright=false;
                     break;
                 case this.zDown && this.qDown:
-                    this.hautLeft()
-                    this.flaghautleft=false;
+                    this.velocityPlayer = 200;
+                    this.haut();
+                    this.moveLeft()
+                    this.flagleft=false;
+                    this.flaghaut=false;
                     break;
                 case this.zDown && this.dDown:
-                    this.hautRight()
-                    this.flaghautright=false;
+                    this.velocityPlayer = 200;
+                    this.haut()
+                    this.moveRight()
+                    this.flaghaut=false;
+                    this.flagright=false;
                     break;
                 case this.qDown:
                     this.moveLeft()
@@ -296,6 +243,7 @@ class Player {
                     break;
                 case this.dDown:
                     this.moveRight();
+                    this.flagright=false;
                     break;
                 case this.zDown:
                     this.haut()
@@ -316,10 +264,6 @@ class Player {
         this.moveHautRelease()
         this.moveLeftRelease()
 
-        this.hautLeftRelease()
-        this.basLeftRelease()
-        this.hautRightRelease()
-        this.basRightRelease()
 
     }
 

@@ -3,10 +3,10 @@ class Player2 {
 
     constructor(scene) {
         let me = this;
-        this.scene=scene
-        this.cameras=scene
+        this.scene = scene
+        this.cameras = scene
         this.player = this.scene.physics.add.sprite(500, 300, 'player');
-        this.player.setDisplaySize(32,32);
+        this.player.setDisplaySize(32, 32);
         this.player.setBounce(0);
         this.player.setCollideWorldBounds(true);
         this.scene.physics.add.collider(this.player, this.scene.platforms);
@@ -15,16 +15,18 @@ class Player2 {
         this.player.setMaxVelocity(300, 300);
 
 
-        this.flaghaut=false;
-        this.flagbas=false;
-        this.flagleft=false;
-        this.flagright=false;
+        this.flaghaut = false;
+        this.flagbas = false;
+        this.flagleft = false;
+        this.flagright = false;
+
+        this.velocityPlayer = 300;
 
         this.initKeyboard();
 
 
-        this.speed={
-            speedDash:2,
+        this.speed = {
+            speedDash: 2,
         }
 
         this.dash = this.scene.tweens.add({
@@ -33,18 +35,18 @@ class Player2 {
             ease: "Circ.easeInOut", // 'Cubic', 'Elastic', 'Bounce', 'Back'
             duration: 300,
 
-            onUpdate: function(){
+            onUpdate: function () {
                 me.player.setVelocityX(me.initSpeedX * me.speed.speedDash)
                 me.player.setVelocityY(me.initSpeedY * me.speed.speedDash)
 
             },
-            onComplete: function(){
+            onComplete: function () {
                 me.isDashing = false;
                 console.log('finish');
                 me.player.body.x = 50;
                 me.player.body.y = 300;
                 me.player.setMaxVelocity(300);
-                setTimeout(function() {
+                setTimeout(function () {
                     me.dashIsUp = true
                     me.flagDash = false;
                     console.log('dash op')
@@ -94,11 +96,15 @@ class Player2 {
                 case Phaser.Input.Keyboard.KeyCodes.UP:
                     me.zDown = false;
                     break;
+                case Phaser.Input.Keyboard.KeyCodes.ESC:
+                    me.Pdown = true;
+                    me.scene.Pauseflag = false;
+                    break;
             }
         });
     }
 
-    Dash(){
+    Dash() {
         let me = this;
         if (this.dashIsUp) {
             if (this.flagDash) {
@@ -118,42 +124,20 @@ class Player2 {
             }
         }
     }
-
     haut(){
-        this.player.setVelocityY(-300);
+        this.player.setVelocityY(this.velocityPlayer * -1);
     }
     bas(){
-        this.player.setVelocityY(300);
+        this.player.setVelocityY(this.velocityPlayer);
     }
     moveRight(){
-        this.player.setVelocityX(300);
+        this.player.setVelocityX(this.velocityPlayer);
         this.player.setFlipX(false);
     }
     moveLeft(){
-        this.player.setVelocityX(-300);
+        this.player.setVelocityX(this.velocityPlayer * -1);
         this.player.setFlipX(true);
 
-    }
-
-    hautRight(){
-        this.player.setVelocityY(-200);
-        this.player.setVelocityX(200);
-        this.player.setFlipX(false);
-    }
-    basLeft(){
-        this.player.setVelocityY(200);
-        this.player.setVelocityX(-200);
-        this.player.setFlipX(true);
-    }
-    basRight(){
-        this.player.setVelocityX(200);
-        this.player.setVelocityY(200);
-        this.player.setFlipX(false);
-    }
-    hautLeft(){
-        this.player.setVelocityX(-200);
-        this.player.setVelocityY(-200);
-        this.player.setFlipX(true);
     }
 
     moveLeftRelease(){
@@ -163,6 +147,7 @@ class Player2 {
                 // fais rien
                 break;
             case !this.qDown:
+                this.velocityPlayer = 300;
                 this.player.setVelocityX(0);
                 this.flagleft=true;
                 break;
@@ -175,6 +160,7 @@ class Player2 {
                 // fais rien
                 break;
             case !this.dDown:
+                this.velocityPlayer = 300;
                 this.player.setVelocityX(0);
                 this.flagright=true;
                 break;
@@ -187,6 +173,7 @@ class Player2 {
                 // fais rien
                 break;
             case !this.zDown:
+                this.velocityPlayer = 300;
                 this.player.setVelocityY(0);
                 this.flaghaut=true;
                 break;
@@ -199,106 +186,68 @@ class Player2 {
                 // fais rien
                 break;
             case !this.sDown:
+                this.velocityPlayer = 300;
                 this.player.setVelocityY(0);
                 this.flagbas=true;
                 break;
         }
     }
 
-    basLeftRelease(){
-        // ralenti gauche
-        switch(true){
-            case this.flagbasleft:
-                // fais rien
-                break;
-            case !this.qDown:
-                this.player.setVelocityX(0);
-                this.player.setVelocityY(0);
-                this.flagbasleft=true;
-                break;
-        }
-    }
-    hautRightRelease(){
-        // ralenti gauche
-        switch(true){
-            case this.flaghautright:
-                // fais rien
-                break;
-            case !this.dDown:
-                this.player.setVelocityX(0);
-                this.player.setVelocityY(0);
-                this.flaghautright=true;
-                break;
-        }
-    }
-    hautLeftRelease(){
-        // ralenti gauche
-        switch(true){
-            case this.flaghautleft:
-                // fais rien
-                break;
-            case !this.zDown:
-                this.player.setVelocityY(0);
-                this.player.setVelocityX(0);
-                this.flaghautleft=true;
-                break;
-        }
-    }
-    basRightRelease(){
-        // ralenti gauche
-        switch(true){
-            case this.flagbasright:
-                // fais rien
-                break;
-            case !this.sDown:
-                this.player.setVelocityY(0);
-                this.player.setVelocityX(0);
-                this.flagbasright=true;
-                break;
-        }
-    }
-    stop(){
+    stop() {
         this.player.setVelocityX(0);
         this.player.setVelocityY(0);
     }
 
-    move(){
+    move() {
 
-        if (!this.isDashing){
+        if (!this.isDashing) {
             switch (true) {
                 case this.shiftDown:
                     this.Dash();
                     break;
                 case this.qDown && this.sDown:
-                    this.basLeft()
-                    this.flagbasleft=false;
+                    this.velocityPlayer = 200;
+                    this.bas();
+                    this.moveLeft();
+                    this.flagleft = false;
+                    this.flagbas = false;
                     break;
                 case this.dDown && this.sDown:
-                    this.basRight()
-                    this.flagbasright=false;
+                    this.velocityPlayer = 200;
+                    this.bas();
+                    this.moveRight();
+                    this.flagbas = false;
+                    this.flagright = false;
                     break;
                 case this.zDown && this.qDown:
-                    this.hautLeft()
-                    this.flaghautleft=false;
+                    this.velocityPlayer = 200;
+                    this.haut();
+                    this.moveLeft()
+                    this.flagleft = false;
+                    this.flaghaut = false;
                     break;
                 case this.zDown && this.dDown:
-                    this.hautRight()
-                    this.flaghautright=false;
+                    this.velocityPlayer = 200;
+                    this.haut()
+                    this.moveRight()
+                    this.flaghaut = false;
+                    this.flagright = false;
                     break;
                 case this.qDown:
                     this.moveLeft()
-                    this.flagleft=false;
+                    this.flagleft = false;
                     break;
                 case this.dDown:
                     this.moveRight();
+                    this.flagright = false;
                     break;
                 case this.zDown:
                     this.haut()
-                    this.flaghaut=false;
+                    this.flaghaut = false;
                     break;
                 case this.sDown:
                     this.bas();
-                    this.flagbas=false;
+                    this.flagbas = false;
                     break;
                 default:
                     this.stop();
@@ -311,13 +260,8 @@ class Player2 {
         this.moveHautRelease()
         this.moveLeftRelease()
 
-        this.hautLeftRelease()
-        this.basLeftRelease()
-        this.hautRightRelease()
-        this.basRightRelease()
 
     }
-
 }
 
 
