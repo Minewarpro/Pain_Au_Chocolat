@@ -11,6 +11,8 @@ class Player {
         this.scene.physics.add.collider(this.player, this.scene.platforms);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
+        this.player.setMaxVelocity(600);
+
 
         this.flaghaut=false;
         this.flagbas=false;
@@ -211,12 +213,13 @@ class Player {
                     this.haut()
                     this.moveLeft()
                     this.flagleft=false;
-                    this.flaghaut=true;
+                    this.flaghaut=false;
                     break;
                 case this.zDown && this.dDown:
                     this.haut();
                     this.moveRight()
                     this.flagright = false;
+                    this.flaghaut=false;
                     break;
                 case this.qDown:
                     this.moveLeft()
