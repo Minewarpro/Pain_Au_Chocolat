@@ -1,7 +1,7 @@
 class scene extends Phaser.Scene {
 
     preload() {
-        this.load.image('background', 'assets/images/background.png');
+        this.load.image('background', 'assets/images/Base.jpg');
         this.load.image('spike', 'assets/images/spike.png');
         // At last image must be loaded with its JSON
         this.load.atlas('player', 'assets/images/kenney_player.png', 'assets/images/kenney_player_atlas.json');
@@ -19,7 +19,6 @@ class scene extends Phaser.Scene {
 
 
         const backgroundImage = this.add.image(0, 0, 'background').setOrigin(0, 0);
-        backgroundImage.setScale(1, 0.8);
         const map = this.make.tilemap({key: 'map'});
 
         const tileset = map.addTilesetImage('Alpha_test1', 'tiles');
@@ -31,30 +30,13 @@ class scene extends Phaser.Scene {
 
         this.player = new Player(this)
 
-        this.cameras.main.startFollow(this.player.player,false);
+
     }
 
 
     update() {
 
-        switch (true) {
-            case (this.cursors.space.isDown || this.cursors.up.isDown) && this.player.player.body.onFloor():
-                this.player.jump()
-                console.log("oui")
-                break;
-            case this.cursors.left.isDown:
-                this.player.moveLeft()
-                break;
-            case this.cursors.right.isDown:
-                this.player.moveRight();
-                break;
-            default:
-                this.player.stop();
-        }
-
-
-
-
+        this.player.move();
 
     }
 }

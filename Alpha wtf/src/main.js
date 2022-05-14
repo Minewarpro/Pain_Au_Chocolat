@@ -1,16 +1,16 @@
 const config = {
     type: Phaser.AUTO,
     parent: 'game',
-    width: 1920,
-    heigth: 1080,
+    width: 1280,
+    heigth: 720,
     scale: {
         mode: Phaser.Scale.RESIZE,
-        autoCenter: Phaser.Scale.CENTER_BOTH
+        autoCenter: Phaser.Scale.CENTER
     },
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 500 },
+            gravity: { y: 0 },
             debug: true,
         },
     },

@@ -9,52 +9,184 @@ class Player {
         this.player.setCollideWorldBounds(false);
         this.scene.physics.add.collider(this.player, this.scene.platforms);
 
-        this.scene.anims.create({
-            key: 'walk',
-            frames: this.scene.anims.generateFrameNames('player', {
-                prefix: 'robo_player_',
-                start: 2,
-                end: 3,
-            }),
-            frameRate: 10,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'idle',
-            frames: [{key: 'player', frame: 'robo_player_0'}],
-            frameRate: 10,
 
-        });
-        this.scene.anims.create({
-            key: 'jump',
-            frames: [{key: 'player', frame: 'robo_player_1'}],
-            frameRate: 10,
-            repeat:-1,
+        this.flaghaut=false;
+        this.flagbas=false;
+        this.flagleft=false;
+        this.flagright=false;
 
+        this.initKeyboard();
+    }
+
+    initKeyboard() {
+        let me = this;
+
+
+        this.scene.input.keyboard.on('keydown', function (kevent) {
+                switch (kevent.keyCode) {
+                    case Phaser.Input.Keyboard.KeyCodes.SHIFT:
+                        me.shiftDown = true;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.D:
+                        me.dDown = true;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.Q:
+                            me.qDown = true;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.S:
+                        me.sDown = true;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.Z:
+                        me.zDown = true;
+                        break;
+                }
+        });
+        this.scene.input.keyboard.on('keyup', function (kevent) {
+            switch (kevent.keyCode) {
+                case Phaser.Input.Keyboard.KeyCodes.SHIFT:
+                    me.shiftDown = false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                    me.dDown = false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.Q:
+                        me.qDown = false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.S:
+                        me.sDown = false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.Z:
+                    me.zDown = false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.ESC:
+                    me.Pdown = true;
+                    me.scene.Pauseflag = false;
+                    break;
+            }
         });
     }
 
-    jump(){
-        this.player.setVelocityY(-420);
-        this.player.play('jump', true);
+    haut(){
+        this.player.setVelocityY(-300);
+    }
+    bas(){
+        this.player.setVelocityY(300);
     }
     moveRight(){
         this.player.setVelocityX(300);
         this.player.setFlipX(false);
-        if (this.player.body.onFloor()) {
-            this.player.play('walk', true)}
     }
     moveLeft(){
         this.player.setVelocityX(-300);
-        if (this.player.body.onFloor()) {
-            this.player.play('walk', true)}
         this.player.setFlipX(true);
+    }
+    
+    moveLeftRelease(){
+        // ralenti gauche
+        switch(true){
+            case this.flagleft:
+                // fais rien
+                break;
+            case !this.qDown:
+                this.player.setVelocityX(0);
+                this.flagleft=true;
+                break;
+        }
+    }
+    moveRightRelease(){
+        // ralenti gauche
+        switch(true){
+            case this.flagright:
+                // fais rien
+                break;
+            case !this.dDown:
+                this.player.setVelocityX(0);
+                this.flagright=true;
+                break;
+        }
+    }
+    moveHautRelease(){
+        // ralenti gauche
+        switch(true){
+            case this.flaghaut:
+                // fais rien
+                break;
+            case !this.zDown:
+                this.player.setVelocityY(0);
+                this.flaghaut=true;
+                break;
+        }
+    }
+    moveBasRelease(){
+        // ralenti gauche
+        switch(true){
+            case this.flagbas:
+                // fais rien
+                break;
+            case !this.sDown:
+                this.player.setVelocityY(0);
+                this.flagbas=true;
+                break;
+        }
     }
     stop(){
         this.player.setVelocityX(0);
-        if (this.player.body.onFloor()) {
-            this.player.play('idle',true)
+        this.player.setVelocityY(0);
+    }
+
+    move(){
+
+        switch (true) {
+            case this.qDown && this.sDown:
+                this.moveLeft()
+                this.bas()
+                this.flagX=false;
+                this.flagleft=false;
+                this.flagbas=false;
+                break;
+            case this.dDown && this.sDown:
+                this.moveRight();
+                this.bas()
+                this.flagbas=false;
+                this.flagright = false;
+                break;
+            case this.zDown && this.qDown:
+                this.haut()
+                this.moveLeft()
+                this.flagleft=false;
+                this.flaghaut=true;
+                break;
+            case this.zDown && this.dDown:
+                this.haut();
+                this.moveRight()
+                this.flagright = false;
+                break;
+            case this.qDown:
+                this.moveLeft()
+                this.flagleft=false;
+                break;
+            case this.dDown:
+                this.moveRight();
+                break;
+            case this.zDown:
+                this.haut()
+                this.flaghaut=false;
+                break;
+            case this.sDown:
+                this.bas();
+                this.flagbas=false;
+                break;
+            default:
+                this.stop();
+                break;
         }
+
+        this.moveBasRelease()
+        this.moveRightRelease()
+        this.moveHautRelease()
+        this.moveLeftRelease()
+
+
     }
 
     }
