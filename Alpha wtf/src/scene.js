@@ -9,6 +9,8 @@ class scene extends Phaser.Scene {
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Alpha1.json');
+
+        this.load.image('background', 'assets/images/Base.jpg');
     }
 
 
@@ -27,16 +29,19 @@ class scene extends Phaser.Scene {
         this.platforms.setCollisionByExclusion(-1, true);
         this.cursors = this.input.keyboard.createCursorKeys();
 
+        this.player1 = new Player(this)
 
-        this.player = new Player(this)
+        this.player2 = new Player2(this)
+
+        this.physics.add.collider(this.player1.player, this.player2.player)
 
 
     }
 
-
     update() {
 
-        this.player.move();
+        this.player1.move();
+        this.player2.move();
 
     }
 }
