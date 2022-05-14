@@ -79,7 +79,7 @@
          "name":"RecupPain",
          "objects":[
                 {
-                 "height":96,
+                 "height":65,
                  "id":6,
                  "name":"",
                  "rotation":0,
@@ -87,7 +87,18 @@
                  "visible":true,
                  "width":96,
                  "x":128,
-                 "y":352
+                 "y":128
+                }, 
+                {
+                 "height":65,
+                 "id":23,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":96,
+                 "x":1056,
+                 "y":545.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -180,8 +191,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":608,
-                 "y":320
+                 "x":624,
+                 "y":337
                 }, 
                 {
                  "height":32,
@@ -213,8 +224,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":832,
-                 "y":480
+                 "x":608,
+                 "y":640
                 }, 
                 {
                  "height":32,
@@ -224,8 +235,19 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":1056,
-                 "y":576
+                 "x":1184,
+                 "y":640
+                }, 
+                {
+                 "height":32,
+                 "id":24,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1184,
+                 "y":640
                 }, 
                 {
                  "height":32,
@@ -235,8 +257,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":288,
-                 "y":544
+                 "x":256,
+                 "y":480
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -245,7 +267,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":23,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.1",
