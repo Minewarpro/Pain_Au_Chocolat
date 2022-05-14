@@ -25,6 +25,9 @@ class Player2 {
         this.flagleft = false;
         this.flagright = false;
 
+        this.isBouncing = false;
+        this.KeyEnable = true;
+
         this.velocityPlayer = 300;
 
         this.initKeyboard();
@@ -64,49 +67,52 @@ class Player2 {
     initKeyboard() {
         let me = this;
 
+        if(this.KeyEnable) {
 
-        this.scene.input.keyboard.on('keydown', function (kevent) {
-            switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.SHIFT:
-                    me.shiftDown = true;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.dDown = true;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.qDown = true;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.DOWN:
-                    me.sDown = true;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.UP:
-                    me.zDown = true;
-                    break;
-            }
-        });
-        this.scene.input.keyboard.on('keyup', function (kevent) {
-            switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.SHIFT:
-                    me.shiftDown = false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.dDown = false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.qDown = false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.DOWN:
-                    me.sDown = false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.UP:
-                    me.zDown = false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.ESC:
-                    me.Pdown = true;
-                    me.scene.Pauseflag = false;
-                    break;
-            }
-        });
+
+            this.scene.input.keyboard.on('keydown', function (kevent) {
+                switch (kevent.keyCode) {
+                    case Phaser.Input.Keyboard.KeyCodes.ENTER:
+                        me.shiftDown = true;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.RIGHT:
+                        me.dDown = true;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.LEFT:
+                        me.qDown = true;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.DOWN:
+                        me.sDown = true;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.UP:
+                        me.zDown = true;
+                        break;
+                }
+            });
+            this.scene.input.keyboard.on('keyup', function (kevent) {
+                switch (kevent.keyCode) {
+                    case Phaser.Input.Keyboard.KeyCodes.ENTER:
+                        me.shiftDown = false;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.RIGHT:
+                        me.dDown = false;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.LEFT:
+                        me.qDown = false;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.DOWN:
+                        me.sDown = false;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.UP:
+                        me.zDown = false;
+                        break;
+                    case Phaser.Input.Keyboard.KeyCodes.ESC:
+                        me.Pdown = true;
+                        me.scene.Pauseflag = false;
+                        break;
+                }
+            });
+        }
     }
 
     Dash() {
@@ -205,68 +211,68 @@ class Player2 {
 
     move() {
 
-        if (!this.isDashing) {
-            switch (true) {
-                case this.shiftDown:
-                    this.Dash();
-                    break;
-                case this.qDown && this.sDown:
-                    this.velocityPlayer = 200;
-                    this.bas();
-                    this.moveLeft();
-                    this.flagleft = false;
-                    this.flagbas = false;
-                    break;
-                case this.dDown && this.sDown:
-                    this.velocityPlayer = 200;
-                    this.bas();
-                    this.moveRight();
-                    this.flagbas = false;
-                    this.flagright = false;
-                    break;
-                case this.zDown && this.qDown:
-                    this.velocityPlayer = 200;
-                    this.haut();
-                    this.moveLeft()
-                    this.flagleft = false;
-                    this.flaghaut = false;
-                    break;
-                case this.zDown && this.dDown:
-                    this.velocityPlayer = 200;
-                    this.haut()
-                    this.moveRight()
-                    this.flaghaut = false;
-                    this.flagright = false;
-                    break;
-                case this.qDown:
-                    this.moveLeft()
-                    this.flagleft = false;
-                    break;
-                case this.dDown:
-                    this.moveRight();
-                    this.flagright = false;
-                    break;
-                case this.zDown:
-                    this.haut()
-                    this.flaghaut = false;
-                    break;
-                case this.sDown:
-                    this.bas();
-                    this.flagbas = false;
-                    break;
-                default:
-                    this.stop();
-                    break;
+            if (!this.isDashing) {
+                switch (true) {
+                    case this.shiftDown:
+                        this.Dash();
+                        break;
+                    case this.qDown && this.sDown:
+                        this.velocityPlayer = 200;
+                        this.bas();
+                        this.moveLeft();
+                        this.flagleft = false;
+                        this.flagbas = false;
+                        break;
+                    case this.dDown && this.sDown:
+                        this.velocityPlayer = 200;
+                        this.bas();
+                        this.moveRight();
+                        this.flagbas = false;
+                        this.flagright = false;
+                        break;
+                    case this.zDown && this.qDown:
+                        this.velocityPlayer = 200;
+                        this.haut();
+                        this.moveLeft()
+                        this.flagleft = false;
+                        this.flaghaut = false;
+                        break;
+                    case this.zDown && this.dDown:
+                        this.velocityPlayer = 200;
+                        this.haut()
+                        this.moveRight()
+                        this.flaghaut = false;
+                        this.flagright = false;
+                        break;
+                    case this.qDown:
+                        this.moveLeft()
+                        this.flagleft = false;
+                        break;
+                    case this.dDown:
+                        this.moveRight();
+                        this.flagright = false;
+                        break;
+                    case this.zDown:
+                        this.haut()
+                        this.flaghaut = false;
+                        break;
+                    case this.sDown:
+                        this.bas();
+                        this.flagbas = false;
+                        break;
+                    default:
+                        this.stop();
+                        break;
+                }
             }
+
+            this.moveBasRelease()
+            this.moveRightRelease()
+            this.moveHautRelease()
+            this.moveLeftRelease()
+
+
         }
-
-        this.moveBasRelease()
-        this.moveRightRelease()
-        this.moveHautRelease()
-        this.moveLeftRelease()
-
-
-    }
 }
 
 

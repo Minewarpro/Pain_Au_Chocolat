@@ -17,7 +17,7 @@ class Pnj {
             immovable: true
         });
         map.getObjectLayer('Pnj').objects.forEach((Pnj) => {
-            const FlameSprite = this.Pnj.create(Pnj.x, Pnj.y, 'pnj').setOrigin(0);
+            const FlameSprite = this.Pnj.create(Pnj.x, Pnj.y, 'pnj');
         });
         this.scene.physics.add.overlap(this.player1.player, this.Pnj, this.collectCollectible1,null,this);
         this.scene.physics.add.overlap(this.player2.player, this.Pnj, this.collectCollectible1,null,this);
@@ -41,7 +41,7 @@ class Pnj {
 
     collectCollectible1(player, pnj){
 
-
+        if(player.nbPain>0){
             if (pnj.op){
                 pnj.setTintFill(0xffffff);
                 this.newPnjToSell = Phaser.Math.Between(0, this.Pnj.getChildren().length-1)
@@ -50,6 +50,7 @@ class Pnj {
 
                 } else {
                     player.nbPain --;
+                    player.nbLivre ++;
                     this.flag = true;
                 }
 
@@ -60,21 +61,22 @@ class Pnj {
                     console.log(player.nbPain)
                 }
 
-                    while(!this.Pnj.getChildren()[this.newPnjToSell].op){
-                        console.log('boucle')
-                        if (this.Pnj.getChildren()[this.newPnjToSell] !== pnj){
-                            console.log('op')
-                            pnj.op = false;
-                            this.Pnj.getChildren()[this.newPnjToSell].setTintFill(0xff0000);
-                            this.Pnj.getChildren()[this.newPnjToSell].op = true;
-                            console.log(player.nbPain)
-                            this.flag = false;
-                            break;
-                        }
-
-                        this.newPnjToSell = Phaser.Math.Between(0, this.Pnj.getChildren().length-1)
+                while(!this.Pnj.getChildren()[this.newPnjToSell].op){
+                    console.log('boucle')
+                    if (this.Pnj.getChildren()[this.newPnjToSell] !== pnj){
+                        console.log('op')
+                        pnj.op = false;
+                        this.Pnj.getChildren()[this.newPnjToSell].setTintFill(0xff0000);
+                        this.Pnj.getChildren()[this.newPnjToSell].op = true;
+                        console.log(player.nbPain)
+                        this.flag = false;
+                        break;
                     }
+
+                    this.newPnjToSell = Phaser.Math.Between(0, this.Pnj.getChildren().length-1)
                 }
+            }
+        }
 
     }
 
