@@ -36,7 +36,7 @@ class scene extends Phaser.Scene {
 
         this.pnj = new Pnj(this, this.player1, this.player2)
 
-        this.item = new Item(this, this.player1, this.player2)
+        this.item = new Item(this, this.player1, this.player2, this.recupPain)
 
         this.playerCollider = this.physics.add.collider(this.player1.player, this.player2.player, this.tuch,null,this)
 

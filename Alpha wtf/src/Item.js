@@ -1,9 +1,10 @@
 class Item {
 
-    constructor(scene, player, player2) {
+    constructor(scene, player, player2, recupPain) {
         this.scene = scene;
         this.player = player;
         this.player2 = player2;
+        this.recupPain = recupPain;
         this.itemCoorX = 0;
 
 
@@ -17,12 +18,13 @@ class Item {
         map.getObjectLayer('Item').objects.forEach((Pnj) => {
             const collideSprite = this.item.create(Pnj.x, Pnj.y, 'pnj').setOrigin(0);
         });
+
         this.scene.physics.add.overlap(this.player.player, this.item, this.TakeItemP1, null, this)
         this.scene.physics.add.overlap(this.player2.player, this.item, this.TakeItemP2, null, this)
     }
 
     TakeItemP1(player, item) {
-        let powerup = 0;
+        let powerup = 3;
 
         //powerup = Phaser.Math.Between(1,4);
 
@@ -33,10 +35,10 @@ class Item {
                 // this.player.Functionboost();
                 break;
             case 2:
-                console.log("powerup 2")
+                player.nbPain = this.recupPain.maxStock;
                 break;
             case 3:
-                console.log("powerup 3")
+                this.recupPain.maxStock += 3;
                 break;
             case 4:
                 console.log("powerup 4")
