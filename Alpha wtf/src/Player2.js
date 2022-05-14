@@ -16,9 +16,7 @@ class Player2 {
         this.player.name="player2"
 
 
-        this.player.nbPain = 0;
-        console.log('joueur 2', this.nbPain);
-
+        this.player.nbPain = 5;
 
         this.flaghaut = false;
         this.flagbas = false;

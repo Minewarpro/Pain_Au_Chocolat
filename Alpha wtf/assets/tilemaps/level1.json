@@ -76,7 +76,7 @@
          "color":"#aaaa00",
          "draworder":"topdown",
          "id":9,
-         "name":"RecupPain",
+         "name":"RecupPain1",
          "objects":[
                 {
                  "height":65,
@@ -88,17 +88,29 @@
                  "width":96,
                  "x":128,
                  "y":128
-                }, 
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "color":"#ffff00",
+         "draworder":"topdown",
+         "id":13,
+         "name":"RecupPain2",
+         "objects":[
                 {
-                 "height":65,
-                 "id":23,
-                 "name":"J2",
+                 "height":64,
+                 "id":27,
+                 "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":96,
                  "x":1056,
-                 "y":544.5
+                 "y":544
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -300,8 +312,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":13,
- "nextobjectid":27,
+ "nextlayerid":14,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.1",

@@ -9,16 +9,25 @@ class RecupPain {
 
         const map = this.scene.make.tilemap({key: 'map'});
 
-        this.Box = this.scene.physics.add.group({
+        this.BoxJ1 = this.scene.physics.add.group({
             allowGravity: false,
             immovable: true
         });
-        map.getObjectLayer('RecupPain').objects.forEach((Box) => {
+        map.getObjectLayer('RecupPain1').objects.forEach((Box) => {
             this.collideSprite = this.scene.physics.add.sprite(Box.x + (Box.width * 0.5), Box.y + (Box.height * 0.5)).setSize(Box.width, Box.height);
-            this.Box.add(this.collideSprite)
+            this.BoxJ1.add(this.collideSprite)
         });
-        this.scene.physics.add.overlap(this.player1.player, this.Box, this.collectCollectible1.bind(this));
-        this.scene.physics.add.overlap(this.player2.player, this.Box, this.collectCollectible2.bind(this));
+
+        this.BoxJ2 = this.scene.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+        map.getObjectLayer('RecupPain2').objects.forEach((Box) => {
+            this.collideSprite = this.scene.physics.add.sprite(Box.x + (Box.width * 0.5), Box.y + (Box.height * 0.5)).setSize(Box.width, Box.height);
+            this.BoxJ2.add(this.collideSprite)
+        });
+        this.scene.physics.add.overlap(this.player1.player, this.BoxJ1, this.collectCollectible1.bind(this));
+        this.scene.physics.add.overlap(this.player2.player, this.BoxJ2, this.collectCollectible2.bind(this));
 
 
     }

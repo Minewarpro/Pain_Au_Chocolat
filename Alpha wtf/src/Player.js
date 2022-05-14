@@ -9,13 +9,12 @@ class Player {
         this.player.setDisplaySize(32,32);
         this.player.setBounce(0);
         this.player.setCollideWorldBounds(true);
-        this.scene.physics.add.collider(this.player, this.scene.platforms);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
         this.player.setMaxVelocity(300, 300);
         this.player.name="player1"
 
-        this.player.nbPain = 0;
+        this.player.nbPain = 5;
         this.player.nbLivre = 0;
 
         this.flaghaut=false;
