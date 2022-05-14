@@ -11,7 +11,7 @@ class Player {
         this.scene.physics.add.collider(this.player, this.scene.platforms);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
-        this.player.setMaxVelocity(600);
+        this.player.setMaxVelocity(300);
 
 
         this.flaghaut=false;
@@ -42,6 +42,7 @@ class Player {
                 console.log('finish');
                 me.player.body.x = 50;
                 me.player.body.y = 300;
+                me.player.setMaxVelocity(300);
                 setTimeout(function() {
                     me.dashIsUp = true
                     me.flagDash = false;
@@ -115,6 +116,7 @@ class Player {
 
                 this.initSpeedX = me.player.body.velocity.x
                 this.initSpeedY = me.player.body.velocity.y
+                this.player.setMaxVelocity(600);
                 this.dash.play();
 
             }
