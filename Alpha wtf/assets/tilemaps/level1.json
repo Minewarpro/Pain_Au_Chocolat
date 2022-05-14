@@ -81,7 +81,7 @@
                 {
                  "height":65,
                  "id":6,
-                 "name":"",
+                 "name":"J1",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -92,13 +92,13 @@
                 {
                  "height":65,
                  "id":23,
-                 "name":"",
+                 "name":"J2",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":96,
                  "x":1056,
-                 "y":545.5
+                 "y":544.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -191,8 +191,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":624,
-                 "y":337
+                 "x":736,
+                 "y":416
                 }, 
                 {
                  "height":32,
@@ -259,6 +259,40 @@
                  "width":32,
                  "x":256,
                  "y":480
+                }, 
+                {
+                 "height":32,
+                 "id":25,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":519,
+                 "y":283
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "color":"#ff0000",
+         "draworder":"topdown",
+         "id":12,
+         "name":"ZoneAmis",
+         "objects":[
+                {
+                 "height":96,
+                 "id":26,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":128,
+                 "x":576,
+                 "y":320
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -266,8 +300,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":12,
- "nextobjectid":25,
+ "nextlayerid":13,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.1",
