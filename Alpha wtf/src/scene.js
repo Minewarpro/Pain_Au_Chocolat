@@ -5,6 +5,7 @@ class scene extends Phaser.Scene {
         this.load.image('spike', 'assets/images/spike.png');
         // At last image must be loaded with its JSON
         this.load.atlas('player', 'assets/images/kenney_player.png', 'assets/images/kenney_player_atlas.json');
+        this.load.image('pnj', 'assets/images/pnj.png');
         this.load.image('tiles', 'assets/tilesets/TileSet_V2.png');
 
         // Load the export Tiled JSON
@@ -29,6 +30,10 @@ class scene extends Phaser.Scene {
 
         this.collide = new Collide(this, this.player1, this.player2)
 
+        this.recupPain = new RecupPain(this, this.player1, this.player2)
+
+        this.pnj = new Pnj(this, this.player1, this.player2)
+
         this.physics.add.collider(this.player1.player, this.player2.player)
 
 
@@ -38,6 +43,7 @@ class scene extends Phaser.Scene {
 
         this.player1.move();
         this.player2.move();
+
 
     }
 }

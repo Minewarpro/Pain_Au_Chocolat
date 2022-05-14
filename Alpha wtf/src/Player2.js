@@ -13,6 +13,11 @@ class Player2 {
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
         this.player.setMaxVelocity(300, 300);
+        this.player.name="player2"
+
+
+        this.player.nbPain = 0;
+        console.log('joueur 2', this.nbPain);
 
 
         this.flaghaut = false;

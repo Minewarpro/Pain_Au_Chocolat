@@ -13,7 +13,10 @@ class Player {
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
         this.player.setMaxVelocity(300, 300);
+        this.player.name="player1"
 
+        this.player.nbPain = 0;
+    console.log('joueur 1', this.nbPain);
 
         this.flaghaut=false;
         this.flagbas=false;
@@ -141,8 +144,6 @@ class Player {
         this.player.setFlipX(true);
 
     }
-
-
 
     moveLeftRelease(){
         // ralenti gauche
