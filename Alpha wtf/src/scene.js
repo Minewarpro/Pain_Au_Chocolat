@@ -6,7 +6,8 @@ class scene extends Phaser.Scene {
         // At last image must be loaded with its JSON
         this.load.atlas('player', 'assets/images/kenney_player.png', 'assets/images/kenney_player_atlas.json');
         this.load.image('pnj', 'assets/images/pnj.png');
-        this.load.image('tiles', 'assets/tilesets/TileSet_V2.png');
+        this.load.image('tilesSol', 'assets/tilesets/TileSet_V2.png');
+        this.load.image('tilesBat', 'assets/tilesets/TileSetBat.png');
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Level1.json');
@@ -21,14 +22,19 @@ class scene extends Phaser.Scene {
         this.flag=false;
         const map = this.make.tilemap({key: 'map'});
 
-        const tileset = map.addTilesetImage('TileSet_V2', 'tiles');
-        this.platforms = map.createStaticLayer('Sol', tileset);
+        const tilesetSol = map.addTilesetImage('TileSet_V2', 'tilesSol');
+        this.platforms = map.createStaticLayer('Sol', tilesetSol);
+
+        const tilesetBat = map.addTilesetImage('TileSetBat', 'tilesBat');
+        this.platforms = map.createStaticLayer('Bat', tilesetBat);
 
         this.cursors = this.input.keyboard.createCursorKeys();
 
         this.player1 = new Player(this)
 
         this.player2 = new Player2(this)
+
+        this.ZoneAmis = new ZoneAmis(this, this.player1, this.player2)
 
         this.pnj = new Pnjia(this, this.player1, this.player2)
 
@@ -125,6 +131,10 @@ class scene extends Phaser.Scene {
             this.player1.move();
             this.player2.move();
         }
+
+
+        this.ZoneAmis.FunctionUpdate()
+
 
     }
 }
