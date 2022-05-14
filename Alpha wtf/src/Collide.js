@@ -1,9 +1,10 @@
 class Collide {
 
-    constructor(scene, player, player2) {
+    constructor(scene, player, player2, pnj) {
         this.scene = scene
         this.player = player
         this.player2 = player2
+        this.pnj = pnj
 
         const map = this.scene.make.tilemap({key: 'map'});
 
@@ -17,8 +18,14 @@ class Collide {
         });
         this.scene.physics.add.collider(this.player.player, this.collide);
         this.scene.physics.add.collider(this.player2.player, this.collide);
+        this.scene.physics.add.collider(this.pnj.Pnj, this.collide,this.tuch);
 
 
     }
 
+    tuch(pnj, mur){
+        pnj.setVelocityX(pnj.body.velocity.x * -1);
+        pnj.setVelocityY(pnj.body.velocity.y * -1);
+
+    }
 }

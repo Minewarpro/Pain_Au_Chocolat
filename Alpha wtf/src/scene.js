@@ -30,15 +30,16 @@ class scene extends Phaser.Scene {
 
         this.player2 = new Player2(this)
 
-        this.collide = new Collide(this, this.player1, this.player2)
+        this.pnj = new Pnjia(this, this.player1, this.player2)
+
+        this.collide = new Collide(this, this.player1, this.player2, this.pnj)
 
         this.recupPain = new RecupPain(this, this.player1, this.player2)
-
-        this.pnj = new Pnj(this, this.player1, this.player2)
 
         this.item = new Item(this, this.player1, this.player2, this.recupPain)
 
         this.playerCollider = this.physics.add.collider(this.player1.player, this.player2.player, this.tuch,null,this)
+
 
         this.speed={
             speedDash:3,
@@ -124,7 +125,6 @@ class scene extends Phaser.Scene {
             this.player1.move();
             this.player2.move();
         }
-
 
     }
 }

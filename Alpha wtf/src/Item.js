@@ -16,7 +16,7 @@ class Item {
         });
 
         map.getObjectLayer('Item').objects.forEach((Pnj) => {
-            const collideSprite = this.item.create(Pnj.x, Pnj.y, 'pnj').setOrigin(0);
+            const collideSprite = this.item.create(Pnj.x, Pnj.y, 'spike').setOrigin(0);
         });
 
         this.scene.physics.add.overlap(this.player.player, this.item, this.TakeItemP1, null, this)
