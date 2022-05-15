@@ -17,6 +17,8 @@ class Player {
         this.player.nbPain = 5;
         this.player.nbLivre = 0;
 
+        this.action = 0;
+
         this.flaghaut=false;
         this.flagbas=false;
         this.flagleft=false;
@@ -64,6 +66,9 @@ class Player {
 
         this.scene.input.keyboard.on('keydown', function (kevent) {
                 switch (kevent.keyCode) {
+                    case Phaser.Input.Keyboard.KeyCodes.E:
+                        me.FonctionAction()
+                        break;
                     case Phaser.Input.Keyboard.KeyCodes.SHIFT:
                         me.shiftDown = true;
                         break;
@@ -259,6 +264,7 @@ class Player {
             }
         }
 
+
         this.moveBasRelease()
         this.moveRightRelease()
         this.moveHautRelease()
@@ -266,7 +272,26 @@ class Player {
 
 
     }
+    FonctionAction(){
+        switch (this.action) {
+            case 1:
+                this.scene.tir1()
+                this.action = 0;
+                break;
+            case 2:
+                console.log("flaque")
+                this.action = 0;
+                break;
+            case 3:
+                console.log("tape")
+                this.action = 0;
+                break;
+            default:
+                console.log("rien")
+                break;
 
+        }
+    }
     }
 
 

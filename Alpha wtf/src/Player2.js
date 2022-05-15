@@ -15,6 +15,7 @@ class Player2 {
         this.player.setMaxVelocity(300, 300);
         this.player.name="player2"
 
+        this.action = 0;
 
         this.player.nbPain = 5;
 
@@ -61,15 +62,17 @@ class Player2 {
         });
 
     }
-
     initKeyboard() {
         let me = this;
 
         if(this.KeyEnable) {
 
-
             this.scene.input.keyboard.on('keydown', function (kevent) {
                 switch (kevent.keyCode) {
+                    case Phaser.Input.Keyboard.KeyCodes.M:
+                        me.FonctionAction()
+
+                        break;
                     case Phaser.Input.Keyboard.KeyCodes.ENTER:
                         me.shiftDown = true;
                         break;
@@ -271,6 +274,28 @@ class Player2 {
 
 
         }
+    FonctionAction(){
+        let me = this;
+        switch (this.action) {
+            case 1:
+                me.scene.tir2()
+                this.action = 0;
+                break;
+            case 2:
+                me.scene.Flaque2()
+                this.action = 0;
+                break;
+            case 3:
+                console.log("tape J2")
+                this.action = 0;
+                break;
+            default:
+                console.log("rien J2")
+                break;
+
+        }
+
+    }
 }
 
 

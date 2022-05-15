@@ -5,7 +5,8 @@ class RecupPain {
         this.player1 = player1
         this.player2 = player2
 
-        this.maxStock = 5;
+        this.maxStockJ1 = 5;
+        this.maxStockJ2 = 5;
 
         const map = this.scene.make.tilemap({key: 'map'});
 
@@ -33,13 +34,13 @@ class RecupPain {
     }
 
     collectCollectible1(player, bonus){
-        this.player1.player.nbPain = this.maxStock;
+        this.player1.player.nbPain = this.maxStockJ1;
         console.log(this.player1.player.nbPain)
 
     }
 
     collectCollectible2(player, bonus){
-        this.player2.player.nbPain = this.maxStock;
+        this.player2.player.nbPain = this.maxStockJ2;
         console.log(this.player2.player.nbPain)
 
     }

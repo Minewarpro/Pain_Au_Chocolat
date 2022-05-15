@@ -24,24 +24,25 @@ class Item {
     }
 
     TakeItemP1(player, item) {
-        let powerup = 3;
+        let powerup = 4;
 
-        //powerup = Phaser.Math.Between(1,4);
-
-        console.log(powerup)
+        //powerup = Phaser.Math.Between(1,5);
 
         switch (powerup) {
-            case 0:
+            case 1:
                 // this.player.Functionboost();
                 break;
             case 2:
-                player.nbPain = this.recupPain.maxStock;
+                this.recupPain.maxStockJ1 += 1;
                 break;
             case 3:
-                this.recupPain.maxStock += 3;
+                this.player.action =1;
                 break;
             case 4:
-                console.log("powerup 4")
+                this.player.action =2;
+                break;
+            case 5:
+                this.player.action =3;
                 break;
         }
         item.body.setEnable(false);
@@ -59,24 +60,28 @@ class Item {
     }
 
     TakeItemP2(player, item) {
-        let powerup = 0;
+        let powerup = 4;
 
-        //powerup = Phaser.Math.Between(1,4);
+        //powerup = Phaser.Math.Between(1,5);
 
-        console.log(powerup)
 
         switch (powerup) {
-            case 0:
+            case 1:
                 // this.player2.Functionboost();
                 break;
             case 2:
-                console.log("powerup 2")
+                this.recupPain.maxStockJ2 += 1;
+                this.player.FonctionAction()
                 break;
             case 3:
-                console.log("powerup 3")
+                this.player2.player.action =1;
                 break;
             case 4:
-                console.log("powerup 4")
+                console.log("oui")
+                this.player2.action =2;
+                break;
+            case 5:
+                this.player2.player.action =3;
                 break;
         }
         item.body.setEnable(false);
@@ -92,4 +97,7 @@ class Item {
             loop: false,
         })
     }
+
+
+
 }
