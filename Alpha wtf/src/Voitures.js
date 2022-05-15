@@ -7,17 +7,26 @@ class Voitures{
         this.player1 = player1;
         this.player2 = player2;
         this.pnj = pnj;
-        this.voiture1 = this.scene.physics.add.sprite(290, 0, 'player');
-        this.voiture1.body.setSize(80,100)
-        this.voiture1.setDisplaySize(60,100);
+        this.voiture1 = this.scene.physics.add.sprite(290, 0, 'voitureTurbo');
+        this.voiture1.body.setSize(250,460)
+        this.voiture1.body.setOffset(30,150)
+        me.voiture1.setAngle(180);
+        this.voiture1.setScale(0.2)
         this.voiture1.setImmovable(true);
         this.scene.physics.add.collider(this.player2.player, this.voiture1, this.tuch2, null, this);
         this.scene.physics.add.collider(this.player1.player, this.voiture1, this.tuch1, null, this);
 
+        this.voiture2 = this.scene.physics.add.sprite(1380, 350, 'voiture');
+        me.voiture2.body.setSize(460,250)
+        me.voiture2.body.setOffset(-60,110)
+        me.voiture2.setAngle(-90);
+        this.voiture2.setScale(0.2)
+        this.voiture2.setImmovable(true);
+        this.scene.physics.add.collider(this.player2.player, this.voiture2, this.tuch2, null, this);
+        this.scene.physics.add.collider(this.player1.player, this.voiture2, this.tuch1, null, this);
 
-        this.isTweening1=true;
-        this.isTweening2=false;
-        this.isTweening3=false;
+
+
 
         this.tween1 = this.scene.tweens.add({
             targets: this.voiture1,
@@ -25,10 +34,9 @@ class Voitures{
             duration: 1000,
             ease: 'Linear',
             onComplete: function () {
-                me.isTweening2=true;
-                me.isTweening1=false;
                 me.voiture1.setAngle(90);
-                me.voiture1.body.setSize(150, 60)
+                me.voiture1.body.setSize(460,250)
+                me.voiture1.body.setOffset(0,190)
                 me.tween2.play()
             }
         });
@@ -39,10 +47,9 @@ class Voitures{
             duration: 1000,
             ease: 'Linear',
             onComplete: function () {
-                me.isTweening3=true;
-                me.isTweening2=false;
-                me.voiture1.setAngle(0);
-                me.voiture1.body.setSize(80, 100)
+                me.voiture1.setAngle(180);
+                me.voiture1.body.setSize(250,460)
+                me.voiture1.body.setOffset(30,150)
                 me.tween3.play()
             }
         });
@@ -54,15 +61,43 @@ class Voitures{
             duration: 1000,
             ease: 'Linear',
             onComplete: function () {
-                me.isTweening1=true;
-                me.isTweening3=false;
                 me.voiture1.x = 290;
                 me.voiture1.y = 0;
+
                 me.tween1.play()
             }
         });
         this.tween3.pause()
 
+
+        this.tween4 = this.scene.tweens.add({
+            targets: this.voiture2,
+            x: 1000,
+            duration: 2000,
+            ease: 'Linear',
+            onComplete: function () {
+                me.voiture2.setAngle(0);
+                me.voiture2.body.setSize(250,460)
+                me.voiture2.body.setOffset(30,20)
+                me.tween5.play()
+            }
+        });
+
+        this.tween5 = me.scene.tweens.add({
+            targets: me.voiture2,
+            y: -200,
+            duration: 3000,
+            ease: 'Linear',
+            onComplete: function () {
+                me.voiture2.setAngle(-90);
+                me.voiture2.body.setSize(460,250)
+                me.voiture2.body.setOffset(-60,110)
+                me.voiture2.x = 1380;
+                me.voiture2.y = 350;
+                me.tween4.play()
+            }
+        });
+        this.tween5.pause()
 
         this.speed={
             speedDash:3,

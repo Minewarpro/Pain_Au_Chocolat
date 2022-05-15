@@ -8,6 +8,8 @@ class scene extends Phaser.Scene {
         this.load.image('pnj', 'assets/images/pnj.png');
         this.load.image('tilesSol', 'assets/tilesets/TileSet_V2.png');
         this.load.image('tilesBat', 'assets/tilesets/TileSetBat.png');
+        this.load.image('voitureTurbo', 'assets/images/voitureturbo.png');
+        this.load.image('voiture', 'assets/images/voiture.png');
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Level1.json');
