@@ -321,7 +321,13 @@ class Player {
         }
         this.scene.physics.add.overlap(this.scene.player2.player, this.beurre,function(){
             me.scene.player2.Functionslow()
-
+            this.Reset = me.scene.time.addEvent({
+                delay: 5000,
+                callback: ()=>{
+                    me.beurre.destroy();
+                },
+                loop: false,
+            })
         });
     }
 
