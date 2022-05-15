@@ -5,6 +5,7 @@ class RecupPain {
         this.player1 = player1
         this.player2 = player2
 
+        this.pain = this.scene.sound.add('pain',{ loop: false });
 
         const map = this.scene.make.tilemap({key: 'map'});
 
@@ -33,7 +34,16 @@ class RecupPain {
 
     collectCollectible(player, bonus){
         player.nbPain = player.maxStock;
-    }
 
+        this.pain.play()
+        bonus.body.setEnable(false)
+        this.Reset = this.scene.time.addEvent({
+            delay: 1000,
+            callback: ()=>{
+                bonus.body.setEnable(true);
+            },
+            loop: false,
+        })
+    }
 
 }

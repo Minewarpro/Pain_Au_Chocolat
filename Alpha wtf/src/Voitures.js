@@ -153,7 +153,7 @@ class Voitures{
     }
 
     tuch2(player, voiture){
-
+        this.scene.Hitsound()
             player.setMaxVelocity(1000);
             window.KeyEnable2 = false;
             this.player2.isBouncing = true;
@@ -162,7 +162,7 @@ class Voitures{
     }
 
     tuch1(player, voiture){
-
+        this.scene.Hitsound()
         player.setMaxVelocity(1000);
         this.player1.isBouncing = true;
         this.turn.play()
