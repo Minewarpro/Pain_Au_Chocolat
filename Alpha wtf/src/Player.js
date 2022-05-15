@@ -6,17 +6,18 @@ class Player {
         this.scene=scene
         this.cameras=scene
         this.player = this.scene.physics.add.sprite(50, 300, 'player');
-        this.anims.create({
+        this.scene.anims.create({
             key: 'player',
             frames: [
                 {key: 'J1-1'},
-                {key: 'coopa-2'},
+                {key: 'J1-2'},
+                {key: 'J1-3'},
+                {key: 'J1-4'},
             ],
             frameRate: 4,
             repeat: -1
         });
-        this.coopa.play('coopa');
-        this.coopa.setVisible(false)
+        this.player.play('player');
 
         this.player.setDisplaySize(32,32);
         this.player.setBounce(0);
@@ -113,15 +114,19 @@ class Player {
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.D:
                         me.dDown = true;
+                        me.player.setAngle(90);
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.Q:
                         me.qDown = true;
+                        me.player.setAngle(180+90);
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.S:
                         me.sDown = true;
+                        me.player.setAngle(180);
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.Z:
                         me.zDown = true;
+                        me.player.setAngle(0);
                         break;
                 }
             }

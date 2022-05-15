@@ -5,7 +5,19 @@ class Player2 {
         let me = this;
         this.scene = scene
         this.cameras = scene
-        this.player = this.scene.physics.add.sprite(500, 300, 'player');
+        this.player = this.scene.physics.add.sprite(50, 300, 'player2');
+        this.scene.anims.create({
+            key: 'player2',
+            frames: [
+                {key: 'J2-1'},
+                {key: 'J2-2'},
+                {key: 'J2-3'},
+                {key: 'J2-4'},
+            ],
+            frameRate: 4,
+            repeat: -1
+        });
+        this.player.play('player2');
         this.player.setDisplaySize(32, 32);
         this.player.setBounce(0);
         this.player.setCollideWorldBounds(true);
@@ -98,14 +110,18 @@ class Player2 {
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.RIGHT:
                             me.dDown = true;
+                            me.player.setAngle(90);
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.LEFT:
                             me.qDown = true;
+                            me.player.setAngle(180+90);
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.DOWN:
                             me.sDown = true;
+                            me.player.setAngle(180);
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.UP:
+                            me.player.setAngle(0);
                             me.zDown = true;
                             break;
                     }
