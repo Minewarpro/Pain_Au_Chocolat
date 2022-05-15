@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55a29647-b694-4fe3-acf2-8389dfcf8fab" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Alpha wtf/src/scene.js" beforeDir="false" afterPath="$PROJECT_DIR$/Alpha wtf/src/scene.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map/Level1..tmj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map/Level1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/map/Level1.tmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/tileset/TileSet_V2.png" beforeDir="false" />
-    </list>
+    <list default="true" id="682cadfb-9265-443b-99a6-2dc646f75567" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,5 +47,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

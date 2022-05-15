@@ -5,7 +5,7 @@ class Start extends Phaser.Scene {
     }
 
     preload(){
-        this.load.image('ecranTitre', 'assets/images/VSMENU.png');
+        this.load.image('ecranTitre', 'Alpha wtf/assets/images/VSMENU.png');
 
     }
 

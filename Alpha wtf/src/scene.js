@@ -5,80 +5,80 @@ class scene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('background', 'assets/images/Base.jpg');
-        this.load.image('spike', 'assets/images/spike.png');
+        this.load.image('background', 'Alpha wtf/assets/images/Base.jpg');
+        this.load.image('spike', 'Alpha wtf/assets/images/spike.png');
         // At last image must be loaded with its JSON
-        this.load.atlas('player', 'assets/images/kenney_player.png', 'assets/images/kenney_player_atlas.json');
-        this.load.image('pnj', 'assets/images/pnj.png');
-        this.load.image('tilesSol', 'assets/tilesets/objet.png');
-        this.load.image('tilesBat', 'assets/tilesets/TileSetBat.png');
-        this.load.image('voitureTurbo', 'assets/images/voitureturbo.png');
-        this.load.image('voiture', 'assets/images/voiture.png');
-        this.load.image('amis', 'assets/images/amis.png');
-        this.load.image('beurre', 'assets/images/Beurre.png');
-        this.load.image('chef', 'assets/images/Chef.png');
-        this.load.image('cercle', 'assets/images/Cercle.png');
-        this.load.image('oeuf', 'assets/images/Oeuf.png');
-        this.load.image('Oeuficon', 'assets/images/OeufUp.png');
-        this.load.image('BeurreIcon', 'assets/images/BeurreUp.png');
+        this.load.atlas('player', 'Alpha wtf/assets/images/kenney_player.png', 'assets/images/kenney_player_atlas.json');
+        this.load.image('pnj', 'Alpha wtf/assets/images/pnj.png');
+        this.load.image('tilesSol', 'Alpha wtf/assets/tilesets/objet.png');
+        this.load.image('tilesBat', 'Alpha wtf/assets/tilesets/TileSetBat.png');
+        this.load.image('voitureTurbo', 'Alpha wtf/assets/images/voitureturbo.png');
+        this.load.image('voiture', 'Alpha wtf/assets/images/voiture.png');
+        this.load.image('amis', 'Alpha wtf/assets/images/amis.png');
+        this.load.image('beurre', 'Alpha wtf/assets/images/Beurre.png');
+        this.load.image('chef', 'Alpha wtf/assets/images/Chef.png');
+        this.load.image('cercle', 'Alpha wtf/assets/images/Cercle.png');
+        this.load.image('oeuf', 'Alpha wtf/assets/images/Oeuf.png');
+        this.load.image('Oeuficon', 'Alpha wtf/assets/images/OeufUp.png');
+        this.load.image('BeurreIcon', 'Alpha wtf/assets/images/BeurreUp.png');
 
         //J1
-        this.load.image('J1-1', 'assets/animation/J2/J21.png')
-        this.load.image('J1-2', 'assets/animation/J2/J22.png')
-        this.load.image('J1-3', 'assets/animation/J2/J23.png')
-        this.load.image('J1-4', 'assets/animation/J2/J24.png')
-        this.load.image('J1Idle', 'assets/animation/J2/IdleJ2.png')
+        this.load.image('J1-1', 'Alpha wtf/assets/animation/J2/J21.png')
+        this.load.image('J1-2', 'Alpha wtf/assets/animation/J2/J22.png')
+        this.load.image('J1-3', 'Alpha wtf/assets/animation/J2/J23.png')
+        this.load.image('J1-4', 'Alpha wtf/assets/animation/J2/J24.png')
+        this.load.image('J1Idle', 'Alpha wtf/assets/animation/J2/IdleJ2.png')
 
         //J2
-        this.load.image('J2-1', 'assets/animation/J1/J11.png')
-        this.load.image('J2-2', 'assets/animation/J1/J12.png')
-        this.load.image('J2-3', 'assets/animation/J1/J13.png')
-        this.load.image('J2-4', 'assets/animation/J1/J14.png')
-        this.load.image('J2Idle', 'assets/animation/J1/IdleJ1.png')
+        this.load.image('J2-1', 'Alpha wtf/assets/animation/J1/J11.png')
+        this.load.image('J2-2', 'Alpha wtf/assets/animation/J1/J12.png')
+        this.load.image('J2-3', 'Alpha wtf/assets/animation/J1/J13.png')
+        this.load.image('J2-4', 'Alpha wtf/assets/animation/J1/J14.png')
+        this.load.image('J2Idle', 'Alpha wtf/assets/animation/J1/IdleJ1.png')
 
         //Zone ami
-        this.load.spritesheet('ami',  'assets/animation/zoneAmi/mainsVertes.png', {frameWidth: 128, frameHeight: 96})
+        this.load.spritesheet('ami',  'Alpha wtf/assets/animation/zoneAmi/mainsVertes.png', {frameWidth: 128, frameHeight: 96})
 
 
         for(var i = 1; i < 6; i++) {
-            this.load.image('Box'+i, 'assets/animation/box/Box'+i+'.png');
+            this.load.image('Box'+i, 'Alpha wtf/assets/animation/box/Box'+i+'.png');
         }
 
         for(var i = 1; i < 5; i++) {
-            this.load.image('PNJ1'+i, 'assets/images/PNJ2ANIM_0'+i+'.png');
+            this.load.image('PNJ1'+i, 'Alpha wtf/assets/images/PNJ2ANIM_0'+i+'.png');
         }
 
         for(var i = 1; i < 5; i++) {
-            this.load.image('PNJ2'+i, 'assets/images/PNJ1Violet_0'+i+'.png');
+            this.load.image('PNJ2'+i, 'Alpha wtf/assets/images/PNJ1Violet_0'+i+'.png');
         }
 
         for(var i = 1; i < 5; i++) {
-            this.load.image('PNJ3'+i, 'assets/images/PNJFemme_0'+i+'.png');
+            this.load.image('PNJ3'+i, 'Alpha wtf/assets/images/PNJFemme_0'+i+'.png');
         }
 
         for(var i = 1; i < 5; i++) {
-            this.load.image('PNJ4'+i, 'assets/images/PNJF2_0'+i+'.png');
+            this.load.image('PNJ4'+i, 'Alpha wtf/assets/images/PNJF2_0'+i+'.png');
         }
 
         // Load the export Tiled JSON
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
-        this.load.image('tilesTreeBush', 'assets/tilesets/TileSetTreeBush.png');
+        this.load.tilemapTiledJSON('map', 'Alpha wtf/assets/tilemaps/level1.json');
+        this.load.image('tilesTreeBush', 'Alpha wtf/assets/tilesets/TileSetTreeBush.png');
 
-        this.load.image('background', 'assets/images/Base.jpg');
+        this.load.image('background', 'Alpha wtf/assets/images/Base.jpg');
 
         // Load FX pour particules etc
-        this.load.image('farine', 'assets/images/farine.png');
+        this.load.image('farine', 'Alpha wtf/assets/images/farine.png');
 
         // Load des son
-        this.load.audio('ambiance',['assets/son/ambiance-ville.wav']);
-        this.load.audio('BInventaire',['assets/son/bonus-inventaire.wav']);
+        this.load.audio('ambiance',['Alpha wtf/assets/son/ambiance-ville.wav']);
+        this.load.audio('BInventaire',['Alpha wtf/assets/son/bonus-inventaire.wav']);
 
-        this.load.audio('client',['assets/son/client.wav']);
-        this.load.audio('crash',['assets/son/crash.wav']);
-        this.load.audio('dash',['assets/son/dash2.wav']);
-        this.load.audio('glissade',['assets/son/glissade.wav']);
-        this.load.audio('pain',['assets/son/pain.wav']);
-        this.load.audio('musique',['assets/son/Musique.wav']);
+        this.load.audio('client',['Alpha wtf/assets/son/client.wav']);
+        this.load.audio('crash',['Alpha wtf/assets/son/crash.wav']);
+        this.load.audio('dash',['Alpha wtf/assets/son/dash2.wav']);
+        this.load.audio('glissade',['Alpha wtf/assets/son/glissade.wav']);
+        this.load.audio('pain',['Alpha wtf/assets/son/pain.wav']);
+        this.load.audio('musique',['Alpha wtf/assets/son/Musique.wav']);
 
     }
 

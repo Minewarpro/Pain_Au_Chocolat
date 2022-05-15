@@ -27,10 +27,10 @@ class Player {
         });
 
 
-        this.player.setDisplaySize(45,45);
+        this.player.setDisplaySize(15,15);
         this.player.setBounce(0);
         this.player.body.setSize(70,70);
-        this.player.body.setOffset(10,10)
+        this.player.setOffset(10,10)
         this.player.setCollideWorldBounds(true);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
