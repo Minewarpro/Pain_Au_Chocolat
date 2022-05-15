@@ -20,7 +20,7 @@ class Player2 {
 
         this.player.action = 0;
         this.piment=false;
-        this.player.boost = false;
+        this.slow=false;
 
         this.flaghaut = false;
         this.flagbas = false;
@@ -182,6 +182,8 @@ class Player2 {
             case !this.qDown:
                 if (this.piment) {
                     this.velocityPlayer = 600;
+                }else if(this.slow) {
+                    this.velocityPlayer = 150;
                 }else {
                     this.velocityPlayer = 300;
                 }
@@ -199,6 +201,8 @@ class Player2 {
             case !this.dDown:
                 if (this.piment) {
                     this.velocityPlayer = 600;
+                }else if(this.slow) {
+                    this.velocityPlayer = 150;
                 }else {
                     this.velocityPlayer = 300;
                 }
@@ -216,6 +220,8 @@ class Player2 {
             case !this.zDown:
                 if (this.piment) {
                     this.velocityPlayer = 600;
+                }else if(this.slow) {
+                    this.velocityPlayer = 150;
                 }else {
                     this.velocityPlayer = 300;
                 }
@@ -233,6 +239,8 @@ class Player2 {
             case !this.sDown:
                 if (this.piment) {
                     this.velocityPlayer = 600;
+                }else if(this.slow) {
+                    this.velocityPlayer = 150;
                 }else {
                     this.velocityPlayer = 300;
                 }
@@ -257,6 +265,8 @@ class Player2 {
                     case this.qDown && this.sDown:
                         if (this.piment) {
                             this.velocityPlayer = 400;
+                        }else if(this.slow) {
+                            this.velocityPlayer = 100;
                         } else {
                             this.velocityPlayer = 200;
                         }
@@ -268,6 +278,8 @@ class Player2 {
                     case this.dDown && this.sDown:
                         if (this.piment) {
                             this.velocityPlayer = 400;
+                        }else if(this.slow) {
+                            this.velocityPlayer = 100;
                         }else {
                             this.velocityPlayer = 200;
                         }
@@ -279,6 +291,8 @@ class Player2 {
                     case this.zDown && this.qDown:
                         if (this.piment) {
                             this.velocityPlayer = 400;
+                        }else if(this.slow) {
+                            this.velocityPlayer = 100;
                         }else {
                             this.velocityPlayer = 200;
                         }
@@ -290,6 +304,8 @@ class Player2 {
                     case this.zDown && this.dDown:
                         if (this.piment) {
                             this.velocityPlayer = 400;
+                        }else if(this.slow) {
+                            this.velocityPlayer = 100;
                         }else {
                             this.velocityPlayer = 200;
                         }
@@ -344,9 +360,19 @@ class Player2 {
             window.KeyEnable1 = false;
         });
     }
+    flaque(){
+        let me =this;
+        this.beurre = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'spike');
+        this.beurre.setDisplaySize(32,32*3);
+        if (this.player.body.velocity.x===0){
+            this.beurre.setAngle(90)
+        }
+        this.scene.physics.add.overlap(this.scene.player1.player, this.beurre,function(){
+            me.scene.player1.Functionslow()
+        });
+    }
     Functionboost(){
         let me =this;
-console.log("rkjgs")
         this.velocityPlayer = 600;
         this.player.setMaxVelocity(600, 600);
         this.piment=true;
@@ -356,17 +382,28 @@ console.log("rkjgs")
             me.piment=false;
         },2000)
     }
+    Functionslow(){
+        let me =this;
+        this.velocityPlayer = 150;
+        this.player.setMaxVelocity(150, 150);
+        this.slow=true;
+        setTimeout(function(){
+            me.velocityPlayer = 300;
+            me.player.setMaxVelocity(300, 300);
+            me.slow=false;
+        },2000)
+    }
     FonctionAction(){
 
         let me = this;
         console.log(this.player.action)
         switch (this.player.action) {
             case 1:
-                me.tir()
+                this.tir()
                 this.player.action = 0;
                 break;
             case 2:
-                me.scene.Flaque2()
+                this.flaque()
                 this.player.action = 0;
                 break;
             case 3:
