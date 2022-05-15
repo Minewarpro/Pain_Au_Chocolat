@@ -319,7 +319,7 @@ class Player {
         this.beurre.body.setEnable(false);
 
         this.Reset = me.scene.time.addEvent({
-            delay: 300,
+            delay: 500,
             callback: ()=>{
                 this.beurre.body.setEnable(true);
             },
