@@ -30,7 +30,11 @@ class Item {
 
         switch (powerup) {
             case 1:
-                player.Functionboost();
+                if (player === this.player.player){
+                    this.player.Functionboost();
+                } else {
+                    this.player2.Functionboost();
+                }
                 break;
             case 2:
                 player.maxStock += 1;

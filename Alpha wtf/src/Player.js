@@ -20,6 +20,7 @@ class Player {
 
         this.player.action = 0;
         this.piment=false;
+        this.player.boost = false;
 
         this.flaghaut=false;
         this.flagbas=false;
@@ -32,6 +33,7 @@ class Player {
         this.velocityPlayer = 300;
 
         this.initKeyboard();
+
 
 
         this.speed={

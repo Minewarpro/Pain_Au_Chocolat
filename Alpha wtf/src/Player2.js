@@ -20,6 +20,7 @@ class Player2 {
 
         this.player.action = 0;
         this.piment=false;
+        this.player.boost = false;
 
         this.flaghaut = false;
         this.flagbas = false;
