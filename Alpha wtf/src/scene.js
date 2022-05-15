@@ -59,6 +59,8 @@ class scene extends Phaser.Scene {
 
         this.glissade = this.sound.add('glissade',{ loop: true, volume:1.2});
 
+        this.BInventaire = this.sound.add('BInventaire',{ loop: false, volume:1.2});
+
 
         let me = this;
         this.temp = 0;
@@ -180,7 +182,9 @@ class scene extends Phaser.Scene {
         this.cameras.main.startFollow(this.center)
 
     }
-
+    BonusSound(){
+        this.BInventaire.play()
+    }
     Hitsound(){
         this.hit.play()
     }

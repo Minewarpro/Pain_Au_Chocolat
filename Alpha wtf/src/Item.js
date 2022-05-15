@@ -65,7 +65,7 @@ class Item {
         }
         item.body.setEnable(false);
         item.setVisible(false);
-
+        this.scene.BonusSound();
 
         this.Reset = this.scene.time.addEvent({
             delay: 5000,
