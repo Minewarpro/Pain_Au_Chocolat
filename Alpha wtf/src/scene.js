@@ -147,7 +147,7 @@ class scene extends Phaser.Scene {
 
         this.platforms = map.createStaticLayer('TreeBush', tilesetTreeBush);
 
-        this.initialTime = 91;
+        this.initialTime = 180;
 
         this.text1 = this.add.text(433, 80, this.player1.player.nbLivre).setFontSize(24);
 
