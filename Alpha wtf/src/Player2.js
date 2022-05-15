@@ -5,9 +5,22 @@ class Player2 {
         let me = this;
         this.scene = scene
         this.cameras = scene
-        this.player = this.scene.physics.add.sprite(500, 300, 'player');
-        this.player.setDisplaySize(32, 32);
+        this.player = this.scene.physics.add.sprite(50, 300, 'player2');
+        this.scene.anims.create({
+            key: 'player2',
+            frames: [
+                {key: 'J2-1'},
+                {key: 'J2-2'},
+                {key: 'J2-3'},
+                {key: 'J2-4'},
+            ],
+            frameRate: 4,
+            repeat: -1
+        });
+        this.player.play('player2', true);
+        this.player.setDisplaySize(70,70);
         this.player.setBounce(0);
+        this.player.body.setSize(70,70);
         this.player.setCollideWorldBounds(true);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
@@ -91,7 +104,6 @@ class Player2 {
                     switch (kevent.keyCode) {
                         case Phaser.Input.Keyboard.KeyCodes.M:
                             me.FonctionAction()
-
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.ENTER:
                             me.shiftDown = true;
@@ -262,6 +274,7 @@ class Player2 {
                         this.Dash();
                         break;
                     case this.qDown && this.sDown:
+                        this.player.setAngle(270-45);
                         if (this.piment) {
                             this.velocityPlayer = 400;
                         }else if(this.slow) {
@@ -275,6 +288,7 @@ class Player2 {
                         this.flagbas = false;
                         break;
                     case this.dDown && this.sDown:
+                        this.player.setAngle(180-45);
                         if (this.piment) {
                             this.velocityPlayer = 400;
                         }else if(this.slow) {
@@ -288,6 +302,7 @@ class Player2 {
                         this.flagright = false;
                         break;
                     case this.zDown && this.qDown:
+                        this.player.setAngle(270+45);
                         if (this.piment) {
                             this.velocityPlayer = 400;
                         }else if(this.slow) {
@@ -301,6 +316,7 @@ class Player2 {
                         this.flaghaut = false;
                         break;
                     case this.zDown && this.dDown:
+                        this.player.setAngle(45);
                         if (this.piment) {
                             this.velocityPlayer = 400;
                         }else if(this.slow) {
@@ -314,18 +330,22 @@ class Player2 {
                         this.flagright = false;
                         break;
                     case this.qDown:
+                        this.player.setAngle(270);
                         this.moveLeft()
                         this.flagleft = false;
                         break;
                     case this.dDown:
+                        this.player.setAngle(90);
                         this.moveRight();
                         this.flagright = false;
                         break;
                     case this.zDown:
+                        this.player.setAngle(0);
                         this.haut()
                         this.flaghaut = false;
                         break;
                     case this.sDown:
+                        this.player.setAngle(180);
                         this.bas();
                         this.flagbas = false;
                         break;
