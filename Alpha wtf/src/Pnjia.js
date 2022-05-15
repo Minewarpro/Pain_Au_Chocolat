@@ -98,11 +98,9 @@ class Pnjia {
             this.flip = true;
             for (let zeub = 0; zeub < this.Pnj.getChildren().length; zeub++) {
                 setTimeout(function(){
-                    console.log(me.Pnj.getChildren()[zeub].collidePnj)
                     this.hasard = Phaser.Math.Between(0, 7)
                     switch (this.hasard) {
                         case 0:
-                            console.log('0')
                             me.Pnj.getChildren()[zeub].setVelocityX(100);
                             me.Pnj.getChildren()[zeub].setVelocityY(0);
                             break;

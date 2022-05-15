@@ -44,6 +44,8 @@ class scene extends Phaser.Scene {
 
         this.item = new Item(this, this.player1, this.player2, this.recupPain)
 
+        this.voitures = new Voitures(this, this.player1, this.player2, this.pnj)
+
         this.playerCollider = this.physics.add.collider(this.player1.player, this.player2.player, this.tuch,null,this)
 
 
@@ -71,8 +73,16 @@ class scene extends Phaser.Scene {
                 }
             },
             onComplete: function(){
-                me.player2.isBouncing = false;
-                me.player2.player.setMaxVelocity(300);
+                if(me.player2.isBouncing){
+                    me.player2.isBouncing = false;
+                    me.player2.player.setMaxVelocity(300);
+                    window.KeyEnable2 = true;
+                } else if (me.player1.isBouncing) {
+                    me.player1.isBouncing = false;
+                    me.player1.player.setMaxVelocity(300);
+                    window.KeyEnable1 = true;
+                }
+
                 me.playerCollider = me.physics.add.collider(me.player1.player, me.player2.player, me.tuch,null,me)
             }
         });
@@ -105,7 +115,7 @@ class scene extends Phaser.Scene {
         if (this.player1.isDashing){
             me.player2.player.setMaxVelocity(1000);
             this.physics.world.removeCollider(this.playerCollider);
-            this.player2.KeyEnable = false;
+            window.KeyEnable2 = false;
             this.player2.isBouncing = true;
             this.initSpeedX = me.player1.player.body.velocity.x;
             this.initSpeedY = me.player1.player.body.velocity.y;
@@ -116,7 +126,7 @@ class scene extends Phaser.Scene {
         if (this.player2.isDashing){
             me.player1.player.setMaxVelocity(1000);
             this.physics.world.removeCollider(this.playerCollider);
-            this.player1.KeyEnable = false;
+            window.KeyEnable1 = false;
             this.player1.isBouncing = true;
             this.initSpeedX1 = me.player2.player.body.velocity.x;
             this.initSpeedY1 = me.player2.player.body.velocity.y;
@@ -132,6 +142,7 @@ class scene extends Phaser.Scene {
             this.player2.move();
         }
 
+        console.log(window.KeyEnable1)
 
         this.ZoneAmis.FunctionUpdate()
 
