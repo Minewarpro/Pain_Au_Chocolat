@@ -7,9 +7,6 @@ class Item {
         this.recupPain = recupPain;
         this.itemCoorX = 0;
 
-        this.Box = this.scene.add.sprite(500, 200, 'Box').setOrigin(0, 0);
-        this.Box.setDisplaySize(32,32);
-
         this.scene.anims.create({
             key: 'Box',
             frames: [
@@ -22,7 +19,7 @@ class Item {
             frameRate: 5,
             repeat: -1
         });
-        this.Box.play('Box');
+
 
         const map = this.scene.make.tilemap({key: 'map'});
 
@@ -32,8 +29,12 @@ class Item {
         });
 
         map.getObjectLayer('Item').objects.forEach((Pnj) => {
-            const collideSprite = this.item.create(Pnj.x, Pnj.y, 'spike').setOrigin(0);
+            const collideSprite = this.item.create(Pnj.x, Pnj.y, 'Box2').setOrigin(0);
         });
+
+        for(var i = 0; i < this.item.getChildren().length; i++) {
+            this.item.getChildren()[i].play('Box')
+        }
 
         this.scene.physics.add.overlap(this.player.player, this.item, this.TakeItem, null, this)
         this.scene.physics.add.overlap(this.player2.player, this.item, this.TakeItem, null, this)
