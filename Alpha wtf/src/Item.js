@@ -24,9 +24,9 @@ class Item {
     }
 
     TakeItem(player, item) {
-        let powerup = 4;
+        let powerup = 0;
 
-        //powerup = Phaser.Math.Between(1,5);
+        powerup = Phaser.Math.Between(1,5);
 
         switch (powerup) {
             case 1:
@@ -44,9 +44,6 @@ class Item {
                 break;
             case 4:
                 player.action =2;
-                break;
-            case 5:
-                player.action =3;
                 break;
         }
         item.body.setEnable(false);

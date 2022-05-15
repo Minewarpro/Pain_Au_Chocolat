@@ -453,10 +453,6 @@ class Player {
                 this.flaque()
                 this.player.action = 0;
                 break;
-            case 3:
-                console.log("tape")
-                this.player.action = 0;
-                break;
             default:
                 console.log("rien")
                 break;
