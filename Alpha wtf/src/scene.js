@@ -14,6 +14,10 @@ class scene extends Phaser.Scene {
         this.load.image('tilesTreeBush', 'assets/tilesets/TileSetTreeBush.png');
 
         this.load.image('background', 'assets/images/Base.jpg');
+
+        // Load FX pour particules etc
+        this.load.image('farine', 'assets/images/farine.png');
+
     }
 
 

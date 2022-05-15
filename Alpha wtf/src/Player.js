@@ -137,7 +137,7 @@ class Player {
     }
 
 
-    Dash(){
+    Dash() {
         let me = this;
         if (this.dashIsUp) {
             if (this.flagDash) {
@@ -154,6 +154,43 @@ class Player {
                 this.player.setMaxVelocity(600);
                 this.dash.play();
 
+                //on creer une particule 'farine'=le nom donné dans le load du png dans la scene
+                let particles = this.scene.add.particles('farine');
+                //creer l'emitteur de particules
+                this.particlesEmit = particles.createEmitter({
+                    alpha: {start: 40, end: 100}, //je crois que ça donne une transparence
+                    scale: {start: 0.4, end: 0.7}, //donne une taille, ici j'ai fait un start/end on peut aussi supprimer et lui donner une taille fixe
+                    accelerationX: -88,
+                    lifespan: {min: 60, max: 120}, //durée de vie
+                    // angle: {min: 0, max: 360}, //la particules s'incline sur un certain angle
+                    // rotation: {min: 0, max: 360}, //la particules rotate sur elle même
+                    frequency: 500 * 5, //nombre de fois ou la particule apparait
+                    // speedX: {min: -30*2, max: 88*2},
+                    // radial: false,
+
+                })
+                this.particlesEmit.startFollow(this.player)
+                particles.setDepth(1);
+                this.scene.time.delayedCall(100, function () {
+                    particles.destroy();
+                });
+                console.log("destroy particles")
+
+                //on creer une particule 'farine'=le nom donné dans le load du png dans la scene
+                //creer l'emitteur de particules
+                this.particlesEmitEnd = particles.createEmitter({
+                    alpha: {start: 40, end: 100}, //je crois que ça donne une transparence
+                    scale: {start: 0.4, end: 0.7}, //donne une taille, ici j'ai fait un start/end on peut aussi supprimer et lui donner une taille fixe
+                    accelerationX: 88,
+                    lifespan: {min: 60, max: 120}, //durée de vie
+                    // angle: {min: 0, max: 360}, //la particules s'incline sur un certain angle
+                    // rotation: {min: 0, max: 360}, //la particules rotate sur elle même
+                    frequency: 500 * 5, //nombre de fois ou la particule apparait
+                    speedX: {min: 30 * 2, max: -88 * 2},
+                    // radial: false,
+
+
+                })
             }
         }
     }
