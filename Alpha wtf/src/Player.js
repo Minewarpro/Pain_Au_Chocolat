@@ -6,6 +6,18 @@ class Player {
         this.scene=scene
         this.cameras=scene
         this.player = this.scene.physics.add.sprite(50, 300, 'player');
+        this.anims.create({
+            key: 'player',
+            frames: [
+                {key: 'J1-1'},
+                {key: 'coopa-2'},
+            ],
+            frameRate: 4,
+            repeat: -1
+        });
+        this.coopa.play('coopa');
+        this.coopa.setVisible(false)
+
         this.player.setDisplaySize(32,32);
         this.player.setBounce(0);
         this.player.setCollideWorldBounds(true);
