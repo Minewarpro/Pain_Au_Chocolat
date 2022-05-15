@@ -26,7 +26,10 @@ class scene extends Phaser.Scene {
 
 
     create() {
+
         let me = this;
+        this.temp = 0;
+        this.temp = 1800;
 
         this.flag=false;
         const map = this.make.tilemap({key: 'map'});
@@ -45,8 +48,6 @@ class scene extends Phaser.Scene {
         this.player1 = new Player(this)
 
         this.player2 = new Player2(this)
-
-        this.ZoneAmis = new ZoneAmis(this, this.player1, this.player2)
 
         this.pnj = new Pnjia(this, this.player1, this.player2)
 
@@ -186,10 +187,27 @@ class scene extends Phaser.Scene {
             this.player1.move();
             this.player2.move();
         }
+        this.temp -= 1;
+        console.log(this.temp)
+        if(this.temp ===1800/2){
+            this.ZoneAmis = new ZoneAmis(this, this.player1, this.player2)
+        }
+        if(this.temp <= 1800/2){
+            this.vendeur.IaGesttion();
+            this.vendeur.vendeur.setVisible(true);
+            this.vendeur.vendeur.body.setEnable(true);
 
-        this.ZoneAmis.FunctionUpdate()
 
-        this.vendeur.IaGesttion();
+            this.ZoneAmis.FunctionUpdate()
+        }else{
+            this.vendeur.vendeur.setVisible(false);
+            this.vendeur.vendeur.body.setEnable(false);
+        }
+
+        //game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
+
+
+
 
     }
 }

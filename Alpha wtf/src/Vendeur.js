@@ -46,17 +46,16 @@ class Vendeur{
 
     Bouge(){
         let me = this;
-        console.log('bouge');
 
         if (this.flip) {
             this.vendeur.setVelocityX(0);
             this.vendeur.setVelocityY(0);
             this.flip = false;
-            console.log('oe')
+
         } else {
             this.flip = true;
             setTimeout(function(){
-                console.log('oe2')
+ 
                 this.hasard = Phaser.Math.Between(0, 7)
                 switch (this.hasard) {
                     case 0:

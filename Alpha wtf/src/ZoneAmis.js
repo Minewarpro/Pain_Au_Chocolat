@@ -26,13 +26,13 @@ class ZoneAmis {
 
     FunctionUpdate(){
         if(this.scene.physics.overlap(this.player1.player, this.zoneAmis)===true && this.scene.physics.overlap(this.player2.player, this.zoneAmis)===true ){
-            console.log("yesman");
+
             this.friend = true;
         }
         if(this.friend === true){
             this.compteur += 1;
             if(this.compteur === 500){
-                console.log("amis")
+
             }
         }else{
             this.compteur = 0;

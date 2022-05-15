@@ -33,7 +33,6 @@ class RecupPain {
 
     collectCollectible(player, bonus){
         player.nbPain = player.maxStock;
-        console.log(player.nbPain)
     }
 
 

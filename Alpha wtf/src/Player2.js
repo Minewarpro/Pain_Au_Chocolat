@@ -52,14 +52,12 @@ class Player2 {
             },
             onComplete: function () {
                 me.isDashing = false;
-                console.log('finish');
                 me.player.body.x = 50;
                 me.player.body.y = 300;
                 me.player.setMaxVelocity(300);
                 setTimeout(function () {
                     me.dashIsUp = true
                     me.flagDash = false;
-                    console.log('dash op')
                 }, 1000)
             }
         });
@@ -439,7 +437,7 @@ class Player2 {
     FonctionAction(){
 
         let me = this;
-        console.log(this.player.action)
+
         switch (this.player.action) {
             case 1:
                 this.tir()
@@ -450,7 +448,7 @@ class Player2 {
                 this.player.action = 0;
                 break;
             default:
-                console.log("rien J2")
+
                 break;
 
         }

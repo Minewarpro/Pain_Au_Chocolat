@@ -53,14 +53,14 @@ class Player {
             },
             onComplete: function(){
                 me.isDashing = false;
-                console.log('finish');
+
                 me.player.body.x = 50;
                 me.player.body.y = 300;
                 me.player.setMaxVelocity(300);
                 setTimeout(function() {
                     me.dashIsUp = true
                     me.flagDash = false;
-                    console.log('dash op')
+
                 }, 1000)
             }
         });
@@ -176,7 +176,6 @@ class Player {
                 this.scene.time.delayedCall(100, function () {
                     particles.destroy();
                 });
-                console.log("destroy particles")
 
                 //on creer une particule 'farine'=le nom donné dans le load du png dans la scene
                 //creer l'emitteur de particules
@@ -489,7 +488,6 @@ class Player {
                 this.player.action = 0;
                 break;
             default:
-                console.log("rien")
                 break;
 
         }
