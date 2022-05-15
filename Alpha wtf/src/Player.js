@@ -124,9 +124,15 @@ class Player {
                     case Phaser.Input.Keyboard.KeyCodes.D:
                         me.dDown = true;
                         break;
-                    case Phaser.Input.Keyboard.KeyCodes.Q:
+                        case Phaser.Input.Keyboard.KeyCodes.Q:
+                        if (window.keyboard_AZERTY) {
                             me.qDown = true;
+                        }
                         break;
+                    case Phaser.Input.Keyboard.KeyCodes.A:
+                        if (window.keyboard_QWERTY) {
+                            me.qDown = true;
+                        }
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.S:
                         me.sDown = true;
@@ -146,7 +152,14 @@ class Player {
                     me.dDown = false;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.Q:
+                    if (window.keyboard_AZERTY) {
                         me.qDown = false;
+                    }
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.A:
+                    if (window.keyboard_QWERTY) {
+                        me.qDown = false;
+                    }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.S:
                         me.sDown = false;

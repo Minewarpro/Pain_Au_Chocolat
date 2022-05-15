@@ -17,28 +17,27 @@ class Pause extends Phaser.Scene {
         window.satrtUi = false;
 
         //BACKGROUND
-        this.Flou = this.add.image(0, 0, 'flou').setOrigin(0, 0);
 
         //AUDIO
 
         //TEXT
         window.Resume = this.add.text(width * 0.5, height * 0.55, 'Reprendre', {
-            color: '#ffffff',
+            color: '#000000',
             fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
             fontSize: 40
         })
             .setOrigin(0.5)
             .setAlpha(0.7);
 
-        this.Pause = this.add.text(width * 0.5, height * 0.30, 'Pause', {
-            color: '#ffffff',
+        this.Pause = this.add.text(width * 0.5, height * 0.42, 'Pause', {
+            color: '#000000',
             fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
             fontSize: 98
         })
-            .setOrigin(0.5);
+            .setOrigin(0.5).setAlpha(1);
 
-        this.Option = this.add.text(width * 0.5, height * 0.65, 'Option', {
-            color: '#ffffff',
+        this.Option = this.add.text(width * 0.5, height * 0.62, 'Option', {
+            color: '#000000',
             fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
             fontSize: 40
         })
@@ -63,7 +62,7 @@ class Pause extends Phaser.Scene {
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
                 this.scene.pause();
-                this.scene.launch('option');
+                this.scene.launch('option1');
                 this.buttonStart.disableInteractive();
                 window.Resume.setAlpha(0);
                 this.Pause.setAlpha(0);
@@ -90,9 +89,9 @@ class Pause extends Phaser.Scene {
         } else {
             this.buttonStart.setInteractive();
             window.Resume.setAlpha(0.7);
-            this.Pause.setAlpha(0.7);
             this.buttonOption.setInteractive();
             this.Option.setAlpha(0.7);
+            this.Pause.setAlpha(1);
             this.optionUi = true;
         }
     }
