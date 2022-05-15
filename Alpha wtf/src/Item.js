@@ -30,7 +30,7 @@ class Item {
 
         switch (powerup) {
             case 1:
-                this.player2.Functionboost();
+                player.Functionboost();
                 break;
             case 2:
                 player.maxStock += 1;
@@ -58,46 +58,5 @@ class Item {
             loop: false,
         })
     }
-  // TakeItemP2(player, item) {
-    //     let powerup = 3;
-    //
-    //     //powerup = Phaser.Math.Between(1,5);
-    //
-    //
-    //     switch (powerup) {
-    //         case 1:
-    //             // this.player2.Functionboost();
-    //             break;
-    //         case 2:
-    //             this.recupPain.maxStockJ2 += 1;
-    //             this.player.FonctionAction()
-    //             break;
-    //         case 3:
-    //             this.player2.action =1;
-    //             break;
-    //         case 4:
-    //             console.log("oui")
-    //             this.player2.action =2;
-    //             break;
-    //         case 5:
-    //             this.player2.action =3;
-    //             break;
-    //     }
-    //     item.body.setEnable(false);
-    //     item.setVisible(false);
-    //
-    //
-    //     this.Reset = this.scene.time.addEvent({
-    //         delay: 5000,
-    //         callback: ()=>{
-    //             item.body.setEnable(true);
-    //             item.setVisible(true);
-    //         },
-    //         loop: false,
-    //     })
-    // }
-
-
-
-
+ 
 }
