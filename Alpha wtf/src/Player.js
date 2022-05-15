@@ -116,19 +116,15 @@ class Player {
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.D:
                         me.dDown = true;
-                        me.player.setAngle(90);
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.Q:
                         me.qDown = true;
-                        me.player.setAngle(180+90);
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.S:
                         me.sDown = true;
-                        me.player.setAngle(180);
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.Z:
                         me.zDown = true;
-                        me.player.setAngle(0);
                         break;
                 }
             }
@@ -385,27 +381,29 @@ class Player {
         });
     }
 
-    move(){
+    move() {
 
-        if (!this.isDashing){
+        if (!this.isDashing) {
             switch (true) {
                 case this.shiftDown:
                     this.Dash();
                     break;
                 case this.qDown && this.sDown:
+                    this.player.setAngle(270-45);
                     if (this.piment) {
                         this.velocityPlayer = 400;
                     }else if(this.slow) {
                         this.velocityPlayer = 100;
-                    }else {
+                    } else {
                         this.velocityPlayer = 200;
                     }
                     this.bas();
                     this.moveLeft();
-                    this.flagleft=false;
-                    this.flagbas=false;
+                    this.flagleft = false;
+                    this.flagbas = false;
                     break;
                 case this.dDown && this.sDown:
+                    this.player.setAngle(180-45);
                     if (this.piment) {
                         this.velocityPlayer = 400;
                     }else if(this.slow) {
@@ -415,10 +413,11 @@ class Player {
                     }
                     this.bas();
                     this.moveRight();
-                    this.flagbas=false;
-                    this.flagright=false;
+                    this.flagbas = false;
+                    this.flagright = false;
                     break;
                 case this.zDown && this.qDown:
+                    this.player.setAngle(270+45);
                     if (this.piment) {
                         this.velocityPlayer = 400;
                     }else if(this.slow) {
@@ -428,10 +427,11 @@ class Player {
                     }
                     this.haut();
                     this.moveLeft()
-                    this.flagleft=false;
-                    this.flaghaut=false;
+                    this.flagleft = false;
+                    this.flaghaut = false;
                     break;
                 case this.zDown && this.dDown:
+                    this.player.setAngle(45);
                     if (this.piment) {
                         this.velocityPlayer = 400;
                     }else if(this.slow) {
@@ -441,31 +441,34 @@ class Player {
                     }
                     this.haut()
                     this.moveRight()
-                    this.flaghaut=false;
-                    this.flagright=false;
+                    this.flaghaut = false;
+                    this.flagright = false;
                     break;
                 case this.qDown:
+                    this.player.setAngle(270);
                     this.moveLeft()
-                    this.flagleft=false;
+                    this.flagleft = false;
                     break;
                 case this.dDown:
+                    this.player.setAngle(90);
                     this.moveRight();
-                    this.flagright=false;
+                    this.flagright = false;
                     break;
                 case this.zDown:
+                    this.player.setAngle(0);
                     this.haut()
-                    this.flaghaut=false;
+                    this.flaghaut = false;
                     break;
                 case this.sDown:
+                    this.player.setAngle(180);
                     this.bas();
-                    this.flagbas=false;
+                    this.flagbas = false;
                     break;
                 default:
                     this.stop();
                     break;
             }
         }
-
 
         this.moveBasRelease()
         this.moveRightRelease()

@@ -104,25 +104,20 @@ class Player2 {
                     switch (kevent.keyCode) {
                         case Phaser.Input.Keyboard.KeyCodes.M:
                             me.FonctionAction()
-
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.ENTER:
                             me.shiftDown = true;
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.RIGHT:
                             me.dDown = true;
-                            me.player.setAngle(90);
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.LEFT:
                             me.qDown = true;
-                            me.player.setAngle(180+90);
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.DOWN:
                             me.sDown = true;
-                            me.player.setAngle(180);
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.UP:
-                            me.player.setAngle(0);
                             me.zDown = true;
                             break;
                     }
@@ -279,6 +274,7 @@ class Player2 {
                         this.Dash();
                         break;
                     case this.qDown && this.sDown:
+                        this.player.setAngle(270-45);
                         if (this.piment) {
                             this.velocityPlayer = 400;
                         }else if(this.slow) {
@@ -292,6 +288,7 @@ class Player2 {
                         this.flagbas = false;
                         break;
                     case this.dDown && this.sDown:
+                        this.player.setAngle(180-45);
                         if (this.piment) {
                             this.velocityPlayer = 400;
                         }else if(this.slow) {
@@ -305,6 +302,7 @@ class Player2 {
                         this.flagright = false;
                         break;
                     case this.zDown && this.qDown:
+                        this.player.setAngle(270+45);
                         if (this.piment) {
                             this.velocityPlayer = 400;
                         }else if(this.slow) {
@@ -318,6 +316,7 @@ class Player2 {
                         this.flaghaut = false;
                         break;
                     case this.zDown && this.dDown:
+                        this.player.setAngle(45);
                         if (this.piment) {
                             this.velocityPlayer = 400;
                         }else if(this.slow) {
@@ -331,18 +330,22 @@ class Player2 {
                         this.flagright = false;
                         break;
                     case this.qDown:
+                        this.player.setAngle(270);
                         this.moveLeft()
                         this.flagleft = false;
                         break;
                     case this.dDown:
+                        this.player.setAngle(90);
                         this.moveRight();
                         this.flagright = false;
                         break;
                     case this.zDown:
+                        this.player.setAngle(0);
                         this.haut()
                         this.flaghaut = false;
                         break;
                     case this.sDown:
+                        this.player.setAngle(180);
                         this.bas();
                         this.flagbas = false;
                         break;
