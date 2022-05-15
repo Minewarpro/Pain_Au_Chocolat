@@ -17,9 +17,10 @@ class Player2 {
             frameRate: 4,
             repeat: -1
         });
-        this.player.play('player2');
-        this.player.setDisplaySize(32, 32);
+        this.player.play('player2', true);
+        this.player.setDisplaySize(70,70);
         this.player.setBounce(0);
+        this.player.body.setSize(70,70);
         this.player.setCollideWorldBounds(true);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
