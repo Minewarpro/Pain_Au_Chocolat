@@ -61,7 +61,7 @@ class scene extends Phaser.Scene {
         }
 
         // Load the export Tiled JSON
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/Level1.json');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
         this.load.image('tilesTreeBush', 'assets/tilesets/TileSetTreeBush.png');
 
         this.load.image('background', 'assets/images/Base.jpg');
@@ -71,8 +71,8 @@ class scene extends Phaser.Scene {
 
         // Load des son
         this.load.audio('ambiance',['assets/son/ambiance-ville.wav']);
-        this.load.audio('BInventaire',['assets/son/Bonus-inventaire.wav']);
-        this.load.audio('BVitesse',['assets/son/Bonus-Vitesse.wav']);
+        this.load.audio('BInventaire',['assets/son/bonus-inventaire.wav']);
+
         this.load.audio('client',['assets/son/client.wav']);
         this.load.audio('crash',['assets/son/crash.wav']);
         this.load.audio('dash',['assets/son/dash2.wav']);
