@@ -61,10 +61,13 @@ class Voitures{
             duration: 1000,
             ease: 'Linear',
             onComplete: function () {
-                me.voiture1.x = 290;
-                me.voiture1.y = 0;
 
-                me.tween1.play()
+                setTimeout(function(){
+                    me.voiture1.x = 290;
+                    me.voiture1.y = 0;
+                    me.tween1.play()
+                },9000)
+
             }
         });
         this.tween3.pause()
@@ -90,11 +93,13 @@ class Voitures{
             ease: 'Linear',
             onComplete: function () {
                 me.voiture2.setAngle(-90);
-                me.voiture2.body.setSize(460,250)
-                me.voiture2.body.setOffset(-60,110)
-                me.voiture2.x = 1380;
-                me.voiture2.y = 350;
-                me.tween4.play()
+                me.voiture2.body.setSize(460, 250)
+                me.voiture2.body.setOffset(-60, 110)
+                setTimeout(function () {
+                    me.voiture2.x = 1380;
+                    me.voiture2.y = 350;
+                    me.tween4.play()
+                }, 3000)
             }
         });
         this.tween5.pause()
