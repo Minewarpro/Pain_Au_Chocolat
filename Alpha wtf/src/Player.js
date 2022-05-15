@@ -1,6 +1,5 @@
 class Player {
 
-
     constructor(scene) {
         let me = this;
         this.scene=scene
@@ -113,7 +112,6 @@ class Player {
     initKeyboard() {
         let me = this;
 
-
         this.scene.input.keyboard.on('keydown', function (kevent) {
             if (window.KeyEnable1) {
                 switch (kevent.keyCode) {
@@ -127,7 +125,8 @@ class Player {
                         me.dDown = true;
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.Q:
-                        me.qDown = true;
+                            me.qDown = true;
+                        break;
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.S:
                         me.sDown = true;
@@ -159,6 +158,7 @@ class Player {
                     me.Pdown = true;
                     me.scene.Pauseflag = false;
                     break;
+
             }
         });
     }

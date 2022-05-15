@@ -1,6 +1,5 @@
 class Player2 {
 
-
     constructor(scene) {
         let me = this;
         this.scene = scene
@@ -176,6 +175,42 @@ class Player2 {
                 this.player.setMaxVelocity(600);
                 this.dash.play();
 
+                //on creer une particule 'farine'=le nom donné dans le load du png dans la scene
+                let particles = this.scene.add.particles('farine');
+                //creer l'emitteur de particules
+                this.particlesEmit = particles.createEmitter({
+                    alpha: {start: 40, end: 100}, //je crois que ça donne une transparence
+                    scale: {start: 0.4, end: 0.7}, //donne une taille, ici j'ai fait un start/end on peut aussi supprimer et lui donner une taille fixe
+                    accelerationX: -88,
+                    lifespan: {min: 60, max: 120}, //durée de vie
+                    // angle: {min: 0, max: 360}, //la particules s'incline sur un certain angle
+                    // rotation: {min: 0, max: 360}, //la particules rotate sur elle même
+                    frequency: 500 * 5, //nombre de fois ou la particule apparait
+                    // speedX: {min: -30*2, max: 88*2},
+                    // radial: false,
+
+                })
+                this.particlesEmit.startFollow(this.player)
+                particles.setDepth(1);
+                this.scene.time.delayedCall(100, function () {
+                    particles.destroy();
+                });
+
+                //on creer une particule 'farine'=le nom donné dans le load du png dans la scene
+                //creer l'emitteur de particules
+                this.particlesEmitEnd = particles.createEmitter({
+                    alpha: {start: 40, end: 100}, //je crois que ça donne une transparence
+                    scale: {start: 0.4, end: 0.7}, //donne une taille, ici j'ai fait un start/end on peut aussi supprimer et lui donner une taille fixe
+                    accelerationX: 88,
+                    lifespan: {min: 60, max: 120}, //durée de vie
+                    // angle: {min: 0, max: 360}, //la particules s'incline sur un certain angle
+                    // rotation: {min: 0, max: 360}, //la particules rotate sur elle même
+                    frequency: 500 * 5, //nombre de fois ou la particule apparait
+                    speedX: {min: 30 * 2, max: -88 * 2},
+                    // radial: false,
+
+
+                })
             }
         }
     }
@@ -275,6 +310,77 @@ class Player2 {
     stop() {
         this.player.setVelocityX(0);
         this.player.setVelocityY(0);
+    }
+
+    tir(){
+        let me =this;
+        this.oeuf = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'oeuf');
+        this.oeuf.setDisplaySize(20,20);
+        if (this.player.body.velocity.x===0 && this.player.body.velocity.y===0){
+            this.oeuf.setVelocityY(400);
+        } else {
+            this.oeuf.setVelocityX(this.player.body.velocity.x * 2);
+            this.oeuf.setVelocityY(this.player.body.velocity.y * 2);
+        }
+        this.scene.physics.add.collider(this.scene.player1.player, this.oeuf,function(){
+            me.turn.play();
+            me.oeuf.destroy();
+            window.KeyEnable1 = false;
+        });
+    }
+    flaque(){
+        let me =this;
+        this.beurre = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'beurre');
+        this.beurre.setDisplaySize(64,64);
+
+        this.beurre.body.setEnable(false);
+
+        this.Reset = me.scene.time.addEvent({
+            delay: 500,
+            callback: ()=>{
+                this.beurre.body.setEnable(true);
+            },
+            loop: false,
+        })
+        if (this.player.body.velocity.x===0){
+            this.beurre.setAngle()
+        }
+        this.scene.physics.add.overlap(this.scene.player1.player, this.beurre,function(){
+            me.scene.player1.Functionslow()
+            this.Reset = me.scene.time.addEvent({
+                delay: 1000,
+                callback: ()=>{
+                    me.scene.tweens.add({
+                        targets: me.beurre,
+                        duration:100,
+                        scale:0,
+                        onComplete: function(){
+                            me.beurre.destroy()
+                        }
+                    });
+
+                },
+                loop: false,
+            })
+        });
+        this.scene.physics.add.overlap(this.player, this.beurre,function(){
+            me.Functionslow()
+            this.Reset = me.scene.time.addEvent({
+                delay: 5000,
+                callback: ()=>{
+                    me.scene.tweens.add({
+                        targets: me.beurre,
+                        duration:100,
+                        scale:0,
+                        onComplete: function(){
+                            me.beurre.destroy()
+                        }
+                    });
+
+                },
+                loop: false,
+            })
+        });
     }
 
     move() {
@@ -384,76 +490,7 @@ class Player2 {
 
     }
 
-    tir(){
-        let me =this;
-        this.oeuf = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'oeuf');
-        this.oeuf.setDisplaySize(20,20);
-        if (this.player.body.velocity.x===0 && this.player.body.velocity.y===0){
-            this.oeuf.setVelocityY(400);
-        } else {
-            this.oeuf.setVelocityX(this.player.body.velocity.x * 2);
-            this.oeuf.setVelocityY(this.player.body.velocity.y * 2);
-        }
-        this.scene.physics.add.collider(this.scene.player1.player, this.oeuf,function(){
-            me.turn.play();
-            me.oeuf.destroy();
-            window.KeyEnable1 = false;
-        });
-    }
-    flaque(){
-        let me =this;
-        this.beurre = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'beurre');
-        this.beurre.setDisplaySize(64,64);
 
-        this.beurre.body.setEnable(false);
-
-        this.Reset = me.scene.time.addEvent({
-            delay: 500,
-            callback: ()=>{
-                this.beurre.body.setEnable(true);
-            },
-            loop: false,
-        })
-        if (this.player.body.velocity.x===0){
-            this.beurre.setAngle()
-        }
-        this.scene.physics.add.overlap(this.scene.player1.player, this.beurre,function(){
-            me.scene.player1.Functionslow()
-            this.Reset = me.scene.time.addEvent({
-                delay: 1000,
-                callback: ()=>{
-                    me.scene.tweens.add({
-                        targets: me.beurre,
-                        duration:100,
-                        scale:0,
-                        onComplete: function(){
-                            me.beurre.destroy()
-                        }
-                    });
-
-                },
-                loop: false,
-            })
-        });
-        this.scene.physics.add.overlap(this.player, this.beurre,function(){
-            me.Functionslow()
-            this.Reset = me.scene.time.addEvent({
-                delay: 5000,
-                callback: ()=>{
-                    me.scene.tweens.add({
-                        targets: me.beurre,
-                        duration:100,
-                        scale:0,
-                        onComplete: function(){
-                            me.beurre.destroy()
-                        }
-                    });
-
-                },
-                loop: false,
-            })
-        });
-    }
     Functionboost(){
         let me =this;
         this.velocityPlayer = 600;
