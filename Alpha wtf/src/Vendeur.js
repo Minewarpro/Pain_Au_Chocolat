@@ -14,6 +14,7 @@ class Vendeur{
         this.vendeur.setImmovable(true)
 
         this.tuchTiming = true;
+        this.tuchTiming2 = true;
 
         this.flip = false;
 
@@ -31,8 +32,16 @@ class Vendeur{
                     me.player1.player.body.x,
                     me.player1.player.body.y,
                     160);
+            }
 
-    }
+        this.dist2 = Phaser.Math.Distance.BetweenPoints(this.player2.player, this.vendeur);
+        if (this.dist2 <= 200 && this.tuchTiming2) {
+            this.scene.physics.moveTo(
+                me.vendeur,
+                me.player2.player.body.x,
+                me.player2.player.body.y,
+                160);
+        }
 }
 
     Bouge(){

@@ -168,6 +168,10 @@ class scene extends Phaser.Scene {
             } else {
                 window.KeyEnable2 = false;
                 this.player2.isBouncing = true;
+                this.vendeur.tuchTiming2=false;
+                setTimeout(function(){
+                    me.vendeur.tuchTiming2=true;
+                },10000);
             }
             this.initSpeedX = me.vendeur.vendeur.body.velocity.x;
             this.initSpeedY = me.vendeur.vendeur.body.velocity.y;
