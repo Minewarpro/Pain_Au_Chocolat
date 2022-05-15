@@ -362,13 +362,41 @@ class Player2 {
     }
     flaque(){
         let me =this;
-        this.beurre = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'spike');
-        this.beurre.setDisplaySize(32,32*3);
+        this.beurre = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'beurre');
+        this.beurre.setDisplaySize(64,64);
+
+        this.beurre.body.setEnable(false);
+
+        this.Reset = me.scene.time.addEvent({
+            delay: 300,
+            callback: ()=>{
+                this.beurre.body.setEnable(true);
+            },
+            loop: false,
+        })
         if (this.player.body.velocity.x===0){
-            this.beurre.setAngle(90)
+            this.beurre.setAngle()
         }
         this.scene.physics.add.overlap(this.scene.player1.player, this.beurre,function(){
             me.scene.player1.Functionslow()
+            this.Reset = me.scene.time.addEvent({
+                delay: 1000,
+                callback: ()=>{
+                    me.scene.tweens.add({
+                        targets: me.beurre,
+                        duration:100,
+                        scale:0,
+                        onComplete: function(){
+                            me.beurre.destroy()
+                        }
+                    });
+
+                },
+                loop: false,
+            })
+        });
+        this.scene.physics.add.overlap(this.player, this.beurre,function(){
+            me.Functionslow()
             this.Reset = me.scene.time.addEvent({
                 delay: 5000,
                 callback: ()=>{
