@@ -19,6 +19,8 @@ class scene extends Phaser.Scene {
         this.load.image('chef', 'assets/images/Chef.png');
         this.load.image('cercle', 'assets/images/Cercle.png');
         this.load.image('oeuf', 'assets/images/Oeuf.png');
+        this.load.image('Oeuficon', 'assets/images/OeufUp.png');
+        this.load.image('BeurreIcon', 'assets/images/BeurreUp.png');
 
         //J1
         this.load.image('J1-1', 'assets/animation/J2/J21.png')
@@ -149,6 +151,15 @@ class scene extends Phaser.Scene {
 
         // Each 1000 ms call onEvent
         this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.onEvent, callbackScope: this, loop: true });
+
+        this.OeufIcon = this.add.sprite(940,80,'Oeuficon')
+        this.OeufIcon.setDisplaySize(20,20)
+        this.OeufIcon.setVisible(false)
+
+
+        this.BeurreIcon = this.physics.add.sprite(433-30,80,'BeurreIcon')
+        this.BeurreIcon.setDisplaySize(20,20)
+        this.BeurreIcon.setVisible(false)
 
         this.speed={
             speedDash:3,

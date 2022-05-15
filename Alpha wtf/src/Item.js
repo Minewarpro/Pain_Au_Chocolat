@@ -19,14 +19,14 @@ class Item {
         });
 
 
+
+
         this.scene.physics.add.overlap(this.player.player, this.item, this.TakeItem, null, this)
         this.scene.physics.add.overlap(this.player2.player, this.item, this.TakeItem, null, this)
     }
 
     TakeItem(player, item) {
-        let powerup = 3;
-
-        //powerup = Phaser.Math.Between(1,5);
+        let powerup = Phaser.Math.Between(1,5);
 
         switch (powerup) {
             case 1:
@@ -41,9 +41,11 @@ class Item {
                 break;
             case 3:
                 player.action =1;
+                this.scene.OeufIcon.setVisible(true)
                 break;
             case 4:
                 player.action =2;
+                this.scene.BeurreIcon.setVisible(true)
                 break;
         }
         item.body.setEnable(false);
@@ -59,5 +61,7 @@ class Item {
             loop: false,
         })
     }
+
+
  
 }

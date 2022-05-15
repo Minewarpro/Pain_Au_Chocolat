@@ -64,34 +64,42 @@ class Vendeur{
                     case 0:
                         me.vendeur.setVelocityX(100);
                         me.vendeur.setVelocityY(0);
+                        me.vendeur.setAngle(90);
                         break;
                     case 1:
                         me.vendeur.setVelocityX(-100);
                         me.vendeur.setVelocityY(0);
+                        me.vendeur.setAngle(270);
                         break;
                     case 2:
                         me.vendeur.setVelocityX(0);
                         me.vendeur.setVelocityY(100);
+                        me.vendeur.setAngle(180);
                         break;
                     case 3:
                         me.vendeur.setVelocityX(0);
                         me.vendeur.setVelocityY(-100);
+                        me.vendeur.setAngle(0);
                         break;
                     case 4:
                         me.vendeur.setVelocityX(100);
                         me.vendeur.setVelocityY(100);
+                        me.vendeur.setAngle(90+45);
                         break;
                     case 5:
                         me.vendeur.setVelocityX(-100);
                         me.vendeur.setVelocityY(-100);
+                        me.vendeur.setAngle(270+45);
                         break;
                     case 6:
                         me.vendeur.setVelocityX(-100);
                         me.vendeur.setVelocityY(100);
+                        me.vendeur.setAngle(270-45);
                         break;
                     case 7:
                         me.vendeur.setVelocityX(100);
                         me.vendeur.setVelocityY(-100);
+                        me.vendeur.setAngle(45);
                         break;
                 }
             },Phaser.Math.Between(0, 3000))

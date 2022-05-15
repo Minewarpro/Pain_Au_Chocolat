@@ -30,7 +30,7 @@ class Player {
         this.player.setDisplaySize(45,45);
         this.player.setBounce(0);
         this.player.body.setSize(70,70);
-        this.player.setOffset(10,10)
+        this.player.body.setOffset(10,10)
         this.player.setCollideWorldBounds(true);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
@@ -524,10 +524,12 @@ class Player {
             case 1:
                 this.tir()
                 this.player.action = 0;
+                this.scene.OeufIcon.setVisible(false)
                 break;
             case 2:
                 this.flaque()
                 this.player.action = 0;
+                this.scene.BeurreIcon.setVisible(false)
                 break;
             default:
                 break;
