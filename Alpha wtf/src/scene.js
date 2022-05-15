@@ -13,7 +13,6 @@ class scene extends Phaser.Scene {
         this.load.image('amis', 'assets/images/amis.png');
         this.load.image('beurre', 'assets/images/Beurre.png');
         this.load.image('chef', 'assets/images/Chef.png');
-        this.load.image('chef', 'assets/images/Chef.png');
         this.load.image('cercle', 'assets/images/Cercle.png');
         this.load.image('oeuf', 'assets/images/Oeuf.png');
 

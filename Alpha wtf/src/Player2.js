@@ -17,10 +17,21 @@ class Player2 {
             frameRate: 4,
             repeat: -1
         });
+
+        this.scene.anims.create({
+            key: 'idle2',
+            frames: [
+                {key: 'J2Idle'},
+            ],
+            frameRate: 4,
+            repeat: -1
+        });
+
         this.player.play('player2', true);
         this.player.setDisplaySize(70,70);
         this.player.setBounce(0);
         this.player.body.setSize(70,70);
+        this.player.setOffset(10,10)
         this.player.setCollideWorldBounds(true);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
@@ -268,100 +279,110 @@ class Player2 {
 
     move() {
 
-            if (!this.isDashing) {
-                switch (true) {
-                    case this.shiftDown:
-                        this.Dash();
-                        break;
-                    case this.qDown && this.sDown:
-                        this.player.setAngle(270-45);
-                        if (this.piment) {
-                            this.velocityPlayer = 400;
-                        }else if(this.slow) {
-                            this.velocityPlayer = 100;
-                        } else {
-                            this.velocityPlayer = 200;
-                        }
-                        this.bas();
-                        this.moveLeft();
-                        this.flagleft = false;
-                        this.flagbas = false;
-                        break;
-                    case this.dDown && this.sDown:
-                        this.player.setAngle(180-45);
-                        if (this.piment) {
-                            this.velocityPlayer = 400;
-                        }else if(this.slow) {
-                            this.velocityPlayer = 100;
-                        }else {
-                            this.velocityPlayer = 200;
-                        }
-                        this.bas();
-                        this.moveRight();
-                        this.flagbas = false;
-                        this.flagright = false;
-                        break;
-                    case this.zDown && this.qDown:
-                        this.player.setAngle(270+45);
-                        if (this.piment) {
-                            this.velocityPlayer = 400;
-                        }else if(this.slow) {
-                            this.velocityPlayer = 100;
-                        }else {
-                            this.velocityPlayer = 200;
-                        }
-                        this.haut();
-                        this.moveLeft()
-                        this.flagleft = false;
-                        this.flaghaut = false;
-                        break;
-                    case this.zDown && this.dDown:
-                        this.player.setAngle(45);
-                        if (this.piment) {
-                            this.velocityPlayer = 400;
-                        }else if(this.slow) {
-                            this.velocityPlayer = 100;
-                        }else {
-                            this.velocityPlayer = 200;
-                        }
-                        this.haut()
-                        this.moveRight()
-                        this.flaghaut = false;
-                        this.flagright = false;
-                        break;
-                    case this.qDown:
-                        this.player.setAngle(270);
-                        this.moveLeft()
-                        this.flagleft = false;
-                        break;
-                    case this.dDown:
-                        this.player.setAngle(90);
-                        this.moveRight();
-                        this.flagright = false;
-                        break;
-                    case this.zDown:
-                        this.player.setAngle(0);
-                        this.haut()
-                        this.flaghaut = false;
-                        break;
-                    case this.sDown:
-                        this.player.setAngle(180);
-                        this.bas();
-                        this.flagbas = false;
-                        break;
-                    default:
-                        this.stop();
-                        break;
-                }
+        if (!this.isDashing) {
+            switch (true) {
+                case this.shiftDown:
+                    this.Dash();
+                    break;
+                case this.qDown && this.sDown:
+                    this.player.setAngle(270-45);
+                    this.player.play('player2', true);
+                    if (this.piment) {
+                        this.velocityPlayer = 400;
+                    }else if(this.slow) {
+                        this.velocityPlayer = 100;
+                    } else {
+                        this.velocityPlayer = 200;
+                    }
+                    this.bas();
+                    this.moveLeft();
+                    this.flagleft = false;
+                    this.flagbas = false;
+                    break;
+                case this.dDown && this.sDown:
+                    this.player.setAngle(180-45);
+                    this.player.play('player2', true);
+                    if (this.piment) {
+                        this.velocityPlayer = 400;
+                    }else if(this.slow) {
+                        this.velocityPlayer = 100;
+                    }else {
+                        this.velocityPlayer = 200;
+                    }
+                    this.bas();
+                    this.moveRight();
+                    this.flagbas = false;
+                    this.flagright = false;
+                    break;
+                case this.zDown && this.qDown:
+                    this.player.setAngle(270+45);
+                    this.player.play('player2', true);
+                    if (this.piment) {
+                        this.velocityPlayer = 400;
+                    }else if(this.slow) {
+                        this.velocityPlayer = 100;
+                    }else {
+                        this.velocityPlayer = 200;
+                    }
+                    this.haut();
+                    this.moveLeft()
+                    this.flagleft = false;
+                    this.flaghaut = false;
+                    break;
+                case this.zDown && this.dDown:
+                    this.player.setAngle(45);
+                    this.player.play('player2', true);
+                    if (this.piment) {
+                        this.velocityPlayer = 400;
+                    }else if(this.slow) {
+                        this.velocityPlayer = 100;
+                    }else {
+                        this.velocityPlayer = 200;
+                    }
+                    this.haut()
+                    this.moveRight()
+                    this.flaghaut = false;
+                    this.flagright = false;
+                    this.player.play('player2', true);
+                    break;
+                case this.qDown:
+                    this.player.setAngle(270);
+                    this.moveLeft()
+                    this.flagleft = false;
+                    this.player.play('player2', true);
+                    break;
+                case this.dDown:
+                    this.player.setAngle(90);
+                    this.moveRight();
+                    this.flagright = false;
+                    this.player.play('player2', true);
+                    break;
+                case this.zDown:
+                    this.player.setAngle(0);
+                    this.haut()
+                    this.flaghaut = false;
+                    this.player.play('player2', true);
+                    break;
+                case this.sDown:
+                    this.player.setAngle(180);
+                    this.bas();
+                    this.flagbas = false;
+                    this.player.play('player2', true);
+                    break;
+                default:
+                    this.stop();
+                    this.player.play('idle2');
+                    break;
             }
-
-            this.moveBasRelease()
-            this.moveRightRelease()
-            this.moveHautRelease()
-            this.moveLeftRelease()
-
-
         }
+
+        this.moveBasRelease()
+        this.moveRightRelease()
+        this.moveHautRelease()
+        this.moveLeftRelease()
+
+
+    }
 
     tir(){
         let me =this;

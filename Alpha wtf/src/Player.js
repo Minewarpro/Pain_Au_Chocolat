@@ -17,13 +17,22 @@ class Player {
             frameRate: 4,
             repeat: -1
         });
-        this.player.play('player', true);
 
-        this.player.setDisplaySize(70,70);
+        this.scene.anims.create({
+            key: 'idle',
+            frames: [
+                {key: 'J1Idle'},
+            ],
+            frameRate: 4,
+            repeat: -1
+        });
+
+
+        this.player.setDisplaySize(45,45);
         this.player.setBounce(0);
-        this.player.setCollideWorldBounds(true);
         this.player.body.setSize(70,70);
-
+        this.player.setOffset(10,10)
+        this.player.setCollideWorldBounds(true);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
         this.player.setMaxVelocity(300, 300);
@@ -390,6 +399,7 @@ class Player {
                     break;
                 case this.qDown && this.sDown:
                     this.player.setAngle(270-45);
+                    this.player.play('player', true);
                     if (this.piment) {
                         this.velocityPlayer = 400;
                     }else if(this.slow) {
@@ -404,6 +414,7 @@ class Player {
                     break;
                 case this.dDown && this.sDown:
                     this.player.setAngle(180-45);
+                    this.player.play('player', true);
                     if (this.piment) {
                         this.velocityPlayer = 400;
                     }else if(this.slow) {
@@ -418,6 +429,7 @@ class Player {
                     break;
                 case this.zDown && this.qDown:
                     this.player.setAngle(270+45);
+                    this.player.play('player', true);
                     if (this.piment) {
                         this.velocityPlayer = 400;
                     }else if(this.slow) {
@@ -432,6 +444,7 @@ class Player {
                     break;
                 case this.zDown && this.dDown:
                     this.player.setAngle(45);
+                    this.player.play('player', true);
                     if (this.piment) {
                         this.velocityPlayer = 400;
                     }else if(this.slow) {
@@ -443,30 +456,35 @@ class Player {
                     this.moveRight()
                     this.flaghaut = false;
                     this.flagright = false;
+                    this.player.play('player', true);
                     break;
                 case this.qDown:
                     this.player.setAngle(270);
                     this.moveLeft()
                     this.flagleft = false;
+                    this.player.play('player', true);
                     break;
                 case this.dDown:
                     this.player.setAngle(90);
                     this.moveRight();
                     this.flagright = false;
+                    this.player.play('player', true);
                     break;
                 case this.zDown:
                     this.player.setAngle(0);
                     this.haut()
                     this.flaghaut = false;
+                    this.player.play('player', true);
                     break;
                 case this.sDown:
                     this.player.setAngle(180);
                     this.bas();
                     this.flagbas = false;
+                    this.player.play('player', true);
                     break;
                 default:
                     this.stop();
-                    this.player = this.scene.physics.add.sprite(50, 300, 'player');
+                    this.player.play('idle');
                     break;
             }
         }
