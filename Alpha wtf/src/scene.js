@@ -1,5 +1,9 @@
 class scene extends Phaser.Scene {
 
+    constructor() {
+        super('game');
+    }
+
     preload() {
         this.load.image('background', 'assets/images/Base.jpg');
         this.load.image('spike', 'assets/images/spike.png');
@@ -108,9 +112,6 @@ class scene extends Phaser.Scene {
 
         const tilesetBat = map.addTilesetImage('TileSetBat', 'tilesBat');
         this.platforms = map.createStaticLayer('Bat', tilesetBat);
-
-
-        this.cursors = this.input.keyboard.createCursorKeys();
 
         this.player1 = new Player(this)
 
