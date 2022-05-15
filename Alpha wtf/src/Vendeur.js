@@ -7,8 +7,8 @@ class Vendeur{
         this.player1 = player1;
         this.player2 = player2;
 
-        this.vendeur = this.scene.physics.add.sprite(400, 200, 'player');
-        this.vendeur.setDisplaySize(32, 32);
+        this.vendeur = this.scene.physics.add.sprite(400, 200, 'chef');
+        this.vendeur.setDisplaySize(32, 64);
         this.vendeur.setBounce(0);
         this.vendeur.setCollideWorldBounds(true);
         this.vendeur.setImmovable(true)
