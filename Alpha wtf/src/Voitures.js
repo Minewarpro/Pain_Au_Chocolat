@@ -13,7 +13,6 @@ class Voitures{
         this.voiture1.setImmovable(true);
         this.scene.physics.add.collider(this.player2.player, this.voiture1, this.tuch2, null, this);
         this.scene.physics.add.collider(this.player1.player, this.voiture1, this.tuch1, null, this);
-        this.scene.physics.add.collider(this.pnj, this.voiture1, this.tuch, null, this);
 
 
         this.isTweening1=true;
@@ -79,29 +78,37 @@ class Voitures{
             angleTurn: 1200,
             duration:1000,
             onUpdate: function (){
-                if(me.player1.isBouncing) {
                     me.player1.player.setAngle(me.angle.angleTurn)
-                }
-                else if (me.player2.isBouncing) {
-                    me.player2.player.setAngle(me.angle.angleTurn)
-                }
             },
             onComplete: function(){
-                if(me.player2.isBouncing){
-                    me.player2.isBouncing = false;
-                    me.player2.player.setMaxVelocity(300);
-                    me.player2.player.setAngle(0)
-                    window.KeyEnable2 = true;
-                } else if (me.player1.isBouncing) {
-                    me.player1.isBouncing = false;
                     me.player1.player.setMaxVelocity(300);
                     me.player1.player.setAngle(0)
                     window.KeyEnable1 = true;
-
-                }
+                    me.player1.isBouncing = false;
             }
         });
         this.turn.pause()
+
+        this.angle2={
+            angleTurn:0,
+        }
+
+
+        this.turn2 = this.scene.tweens.add({
+            targets: this.angle2,
+            angleTurn: 1200,
+            duration:1000,
+            onUpdate: function (){
+                    me.player2.player.setAngle(me.angle2.angleTurn)
+            },
+            onComplete: function(){
+                    me.player2.player.setMaxVelocity(300);
+                    me.player2.player.setAngle(0)
+                    window.KeyEnable2 = true;
+                    me.player2.isBouncing = false;
+            }
+        });
+        this.turn2.pause()
 
     }
 
@@ -110,7 +117,7 @@ class Voitures{
             player.setMaxVelocity(1000);
             window.KeyEnable2 = false;
             this.player2.isBouncing = true;
-            this.turn.play()
+            this.turn2.play()
 
     }
 
