@@ -22,12 +22,14 @@ class scene extends Phaser.Scene {
         this.load.image('J1-2', 'assets/animation/J1/J12.png')
         this.load.image('J1-3', 'assets/animation/J1/J13.png')
         this.load.image('J1-4', 'assets/animation/J1/J14.png')
+        this.load.image('J1Idle', 'assets/animation/J1/IdleJ1.png')
 
         //J2
         this.load.image('J2-1', 'assets/animation/J2/J21.png')
         this.load.image('J2-2', 'assets/animation/J2/J22.png')
         this.load.image('J2-3', 'assets/animation/J2/J23.png')
         this.load.image('J2-4', 'assets/animation/J2/J24.png')
+        this.load.image('J2Idle', 'assets/animation/J2/IdleJ2.png')
 
 
         for(var i = 1; i < 6; i++) {

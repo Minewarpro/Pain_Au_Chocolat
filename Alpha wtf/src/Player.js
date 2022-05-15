@@ -466,6 +466,7 @@ class Player {
                     break;
                 default:
                     this.stop();
+                    this.player = this.scene.physics.add.sprite(50, 300, 'player');
                     break;
             }
         }
