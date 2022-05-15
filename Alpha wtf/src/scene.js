@@ -107,6 +107,10 @@ class scene extends Phaser.Scene {
         this.vendeurFLag=false;
         this.Pauseflag = false;
 
+        window.vendeurWin=false;
+        window.P1Win=false;
+        window.P2Win=false;
+
         this.flag=false;
         const map = this.make.tilemap({key: 'map'});
 
@@ -143,7 +147,7 @@ class scene extends Phaser.Scene {
 
         this.platforms = map.createStaticLayer('TreeBush', tilesetTreeBush);
 
-        this.initialTime = 180;
+        this.initialTime = 91;
 
         this.text1 = this.add.text(433, 80, this.player1.player.nbLivre).setFontSize(24);
 
@@ -382,6 +386,22 @@ class scene extends Phaser.Scene {
                 this.vendeur.vendeur.body.x = 640
                 this.vendeur.vendeur.body.y = 800
             }
+        }
+
+        if(this.initialTime===0){
+            if(this.vendeur.nbLivree > this.player1.player.nbLivre && this.vendeur.nbLivree > this.player2.player.nbLivre){
+                this.scene.start('end');
+                window.vendeurWin=true;
+            }
+            else if(this.player1.player.nbLivre > this.player2.player.nbLivre){
+                window.P1Win=true;
+                this.scene.start('end');
+            }
+            else{
+                window.P2Win=true;
+                this.scene.start('end');
+            }
+
         }
 
         this.pnj.UpdateIa1();
