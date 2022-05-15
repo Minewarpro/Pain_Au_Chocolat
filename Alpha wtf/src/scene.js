@@ -11,6 +11,7 @@ class scene extends Phaser.Scene {
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Level1.json');
+        this.load.image('tilesTreeBush', 'assets/tilesets/TileSetTreeBush.png');
 
         this.load.image('background', 'assets/images/Base.jpg');
     }
@@ -24,6 +25,9 @@ class scene extends Phaser.Scene {
 
         const tilesetSol = map.addTilesetImage('TileSet_V2', 'tilesSol');
         this.platforms = map.createStaticLayer('Sol', tilesetSol);
+
+        const tilesetTreeBush = map.addTilesetImage('TileSetTreeBush', 'tilesTreeBush');
+
 
         const tilesetBat = map.addTilesetImage('TileSetBat', 'tilesBat');
         this.platforms = map.createStaticLayer('Bat', tilesetBat);
@@ -48,6 +52,7 @@ class scene extends Phaser.Scene {
 
         this.playerCollider = this.physics.add.collider(this.player1.player, this.player2.player, this.tuch,null,this)
 
+        this.platforms = map.createStaticLayer('TreeBush', tilesetTreeBush);
 
         this.speed={
             speedDash:3,
@@ -141,8 +146,6 @@ class scene extends Phaser.Scene {
             this.player1.move();
             this.player2.move();
         }
-
-        console.log(window.KeyEnable1)
 
         this.ZoneAmis.FunctionUpdate()
 

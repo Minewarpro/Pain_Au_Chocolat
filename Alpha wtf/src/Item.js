@@ -60,7 +60,7 @@ class Item {
     }
 
     TakeItemP2(player, item) {
-        let powerup = 4;
+        let powerup = 3;
 
         //powerup = Phaser.Math.Between(1,5);
 

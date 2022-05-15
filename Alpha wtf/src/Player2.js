@@ -9,15 +9,15 @@ class Player2 {
         this.player.setDisplaySize(32, 32);
         this.player.setBounce(0);
         this.player.setCollideWorldBounds(true);
-        this.scene.physics.add.collider(this.player, this.scene.platforms);
         this.initSpeedX = me.player.body.velocity.x
         this.initSpeedY = me.player.body.velocity.y
         this.player.setMaxVelocity(300, 300);
         this.player.name="player2"
 
-        this.action = 0;
-
         this.player.nbPain = 5;
+        this.player.nbLivre = 0;
+
+        this.action = 1;
 
         this.flaghaut = false;
         this.flagbas = false;
@@ -25,7 +25,7 @@ class Player2 {
         this.flagright = false;
 
         this.isBouncing = false;
-        this.KeyEnable = true;
+        window.KeyEnable2=true;
 
         this.velocityPlayer = 300;
 
@@ -61,33 +61,52 @@ class Player2 {
             }
         });
 
+        this.angle={
+            angleTurn:0,
+        }
+
+        this.turn = this.scene.tweens.add({
+            targets: this.angle,
+            angleTurn: 1200,
+            duration:1000,
+            onUpdate: function (){
+                    me.scene.player1.player.setAngle(me.angle.angleTurn)
+            },
+            onComplete: function() {
+                me.scene.player1.player.setAngle(0)
+                window.KeyEnable1 = true;
+            }
+        });
+        this.turn.pause()
+
     }
     initKeyboard() {
         let me = this;
 
-        if(this.KeyEnable) {
 
             this.scene.input.keyboard.on('keydown', function (kevent) {
-                switch (kevent.keyCode) {
-                    case Phaser.Input.Keyboard.KeyCodes.M:
-                        me.FonctionAction()
+                if (window.KeyEnable2) {
+                    switch (kevent.keyCode) {
+                        case Phaser.Input.Keyboard.KeyCodes.M:
+                            me.FonctionAction()
 
-                        break;
-                    case Phaser.Input.Keyboard.KeyCodes.ENTER:
-                        me.shiftDown = true;
-                        break;
-                    case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                        me.dDown = true;
-                        break;
-                    case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                        me.qDown = true;
-                        break;
-                    case Phaser.Input.Keyboard.KeyCodes.DOWN:
-                        me.sDown = true;
-                        break;
-                    case Phaser.Input.Keyboard.KeyCodes.UP:
-                        me.zDown = true;
-                        break;
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.ENTER:
+                            me.shiftDown = true;
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.RIGHT:
+                            me.dDown = true;
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.LEFT:
+                            me.qDown = true;
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.DOWN:
+                            me.sDown = true;
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.UP:
+                            me.zDown = true;
+                            break;
+                    }
                 }
             });
             this.scene.input.keyboard.on('keyup', function (kevent) {
@@ -113,7 +132,6 @@ class Player2 {
                         break;
                 }
             });
-        }
     }
 
     Dash() {
@@ -274,11 +292,30 @@ class Player2 {
 
 
         }
+
+    tir(){
+        let me =this;
+        this.oeuf = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'spike');
+        this.oeuf.setDisplaySize(20,20);
+        if (this.player.body.velocity.x===0 && this.player.body.velocity.y===0){
+            this.oeuf.setVelocityY(400);
+        } else {
+            this.oeuf.setVelocityX(this.player.body.velocity.x * 2);
+            this.oeuf.setVelocityY(this.player.body.velocity.y * 2);
+        }
+        this.scene.physics.add.collider(this.scene.player1.player, this.oeuf,function(){
+            me.turn.play();
+            me.oeuf.destroy();
+            window.KeyEnable1 = false;
+        });
+    }
+
     FonctionAction(){
         let me = this;
+        console.log(this.action)
         switch (this.action) {
             case 1:
-                me.scene.tir2()
+                me.tir()
                 this.action = 0;
                 break;
             case 2:

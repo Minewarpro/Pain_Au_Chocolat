@@ -17,12 +17,15 @@ class Player {
         this.player.nbPain = 5;
         this.player.nbLivre = 0;
 
-        this.action = 0;
+        this.action = 1;
 
         this.flaghaut=false;
         this.flagbas=false;
         this.flagleft=false;
         this.flagright=false;
+
+        this.isBouncing = false;
+        window.KeyEnable1=true;
 
         this.velocityPlayer = 300;
 
@@ -58,6 +61,24 @@ class Player {
             }
         });
 
+        this.angle={
+            angleTurn:0,
+        }
+
+        this.turn = this.scene.tweens.add({
+            targets: this.angle,
+            angleTurn: 1200,
+            duration:1000,
+            onUpdate: function (){
+                me.scene.player2.player.setAngle(me.angle.angleTurn)
+            },
+            onComplete: function() {
+                me.scene.player2.player.setAngle(0)
+                window.KeyEnable2 = true;
+            }
+        });
+        this.turn.pause()
+
     }
 
     initKeyboard() {
@@ -65,6 +86,7 @@ class Player {
 
 
         this.scene.input.keyboard.on('keydown', function (kevent) {
+            if (window.KeyEnable1) {
                 switch (kevent.keyCode) {
                     case Phaser.Input.Keyboard.KeyCodes.E:
                         me.FonctionAction()
@@ -76,7 +98,7 @@ class Player {
                         me.dDown = true;
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.Q:
-                            me.qDown = true;
+                        me.qDown = true;
                         break;
                     case Phaser.Input.Keyboard.KeyCodes.S:
                         me.sDown = true;
@@ -85,6 +107,7 @@ class Player {
                         me.zDown = true;
                         break;
                 }
+            }
         });
         this.scene.input.keyboard.on('keyup', function (kevent) {
             switch (kevent.keyCode) {
@@ -207,6 +230,23 @@ class Player {
         this.player.setVelocityY(0);
     }
 
+    tir(){
+        let me =this;
+        this.oeuf = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'spike');
+        this.oeuf.setDisplaySize(20,20);
+        if (this.player.body.velocity.x===0 && this.player.body.velocity.y===0){
+            this.oeuf.setVelocityY(400);
+        } else {
+            this.oeuf.setVelocityX(this.player.body.velocity.x * 2);
+            this.oeuf.setVelocityY(this.player.body.velocity.y * 2);
+        }
+        this.scene.physics.add.collider(this.scene.player2.player, this.oeuf,function(){
+            me.turn.play();
+            me.oeuf.destroy();
+            window.KeyEnable2 = false;
+        });
+    }
+
     move(){
 
         if (!this.isDashing){
@@ -275,7 +315,7 @@ class Player {
     FonctionAction(){
         switch (this.action) {
             case 1:
-                this.scene.tir1()
+                this.tir()
                 this.action = 0;
                 break;
             case 2:
