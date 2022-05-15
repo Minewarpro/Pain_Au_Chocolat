@@ -132,7 +132,7 @@ class Pnjia {
                 if(this.flag){
 
                 } else {
-                    if (this.scene.initialTime===90){
+                    if (this.scene.initialTime<90){
                         if (this.scene.ZoneAmis.Amis){
                             this.player1.player.nbLivre ++;
                             this.player2.player.nbLivre ++;

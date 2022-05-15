@@ -46,8 +46,9 @@ class ZoneAmis {
             this.compteur += 1;
             if(this.compteur === 500){
                 this.Amis=true;
-                this.player1.player.nbLivre = this.player1.player.nbLivre + this.player2.player.nbLivre;
-                this.player2.player.nbLivre = this.player1.player.nbLivre + this.player2.player.nbLivre;
+                this.point1=this.player1.player.nbLivre;
+                this.player1.player.nbLivre =  this.point1 + this.player2.player.nbLivre;
+                this.player2.player.nbLivre =  this.point1 + this.player2.player.nbLivre;
             }
         }else{
             this.compteur = 0;

@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="682cadfb-9265-443b-99a6-2dc646f75567" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Alpha wtf/src/End.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Alpha wtf/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Alpha wtf/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha wtf/src/Pnjia.js" beforeDir="false" afterPath="$PROJECT_DIR$/Alpha wtf/src/Pnjia.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Alpha wtf/src/ZoneAmis.js" beforeDir="false" afterPath="$PROJECT_DIR$/Alpha wtf/src/ZoneAmis.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Alpha wtf/src/scene.js" beforeDir="false" afterPath="$PROJECT_DIR$/Alpha wtf/src/scene.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1652624118005</updated>
       <workItem from="1652624119800" duration="605000" />
-      <workItem from="1652625011390" duration="1376000" />
+      <workItem from="1652625011390" duration="2451000" />
     </task>
     <servers />
   </component>
