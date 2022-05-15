@@ -13,6 +13,7 @@ class Player {
         this.initSpeedY = me.player.body.velocity.y
         this.player.setMaxVelocity(300, 300);
         this.player.name="player1"
+        this.player.setDepth(2);
 
         this.player.nbPain = 5;
         this.player.maxStock = 5;

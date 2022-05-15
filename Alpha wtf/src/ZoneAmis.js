@@ -10,13 +10,12 @@ class ZoneAmis {
         this.compteur = 0;
         this.Amis=false;
 
-        this.nbLivree = this.player2.player.nbLivre + this.player1.player.nbLivre;
+        this.scene.vendeur.nbLivree = this.player2.player.nbLivre + this.player1.player.nbLivre;
 
         this.Reset = this.scene.time.addEvent({
             delay: 2000,
             callback: ()=>{
-                me.nbLivree++;
-                console.log( me.nbLivree)
+                me.scene.vendeur.nbLivree++;
             },
             loop: true,
         })
@@ -29,13 +28,12 @@ class ZoneAmis {
             immovable: true
         });
         map.getObjectLayer('ZoneAmis').objects.forEach((Box) => {
-            this.collideSprite = this.scene.physics.add.sprite(Box.x + (Box.width * 0.5), Box.y + (Box.height * 0.5)).setSize(Box.width, Box.height);
+            this.collideSprite = this.scene.physics.add.sprite(Box.x + (Box.width * 0.5), Box.y + (Box.height * 0.5), 'amis').setSize(Box.width, Box.height);
             this.zoneAmis.add(this.collideSprite)
+
         });
         this.scene.physics.add.overlap(this.player1.player, this.zoneAmis);
         this.scene.physics.add.overlap(this.player2.player, this.zoneAmis);
-
-
 
     }
 

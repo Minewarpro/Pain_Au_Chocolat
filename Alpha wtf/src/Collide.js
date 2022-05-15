@@ -14,7 +14,7 @@ class Collide {
             immovable: true
         });
         map.getObjectLayer('Collide').objects.forEach((collide) => {
-            this.collideSprite = this.scene.physics.add.sprite(collide.x + (collide.width * 0.5), collide.y + (collide.height * 0.5)).setSize(collide.width, collide.height);
+            this.collideSprite = this.scene.physics.add.sprite(collide.x + (collide.width * 0.5), collide.y + (collide.height * 0.5)).setSize(collide.width, collide.height).setDepth(1);
             this.collide.add(this.collideSprite)
         });
         this.scene.physics.add.collider(this.player.player, this.collide,this.tuch);

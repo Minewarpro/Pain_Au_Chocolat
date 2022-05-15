@@ -12,9 +12,12 @@ class Vendeur{
         this.vendeur.setBounce(0);
         this.vendeur.setCollideWorldBounds(true);
         this.vendeur.setImmovable(true)
+        this.vendeur.setDepth(2);
 
         this.tuchTiming1 = true;
         this.tuchTiming2 = true;
+
+        this.nbLivree = 0;
 
         this.flip = false;
 

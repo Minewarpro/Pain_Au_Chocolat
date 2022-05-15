@@ -10,6 +10,7 @@ class scene extends Phaser.Scene {
         this.load.image('tilesBat', 'assets/tilesets/TileSetBat.png');
         this.load.image('voitureTurbo', 'assets/images/voitureturbo.png');
         this.load.image('voiture', 'assets/images/voiture.png');
+        this.load.image('amis', 'assets/images/amis.png');
         this.load.image('beurre', 'assets/images/Beurre.png');
         this.load.image('chef', 'assets/images/Chef.png');
         this.load.image('chef', 'assets/images/Chef.png');
@@ -111,6 +112,8 @@ class scene extends Phaser.Scene {
         this.text1 = this.add.text(433, 80, this.player1.player.nbLivre).setFontSize(24);
 
         this.text2 = this.add.text(880, 80, this.player2.player.nbLivre).setFontSize(24);
+
+        this.text3 = this.add.text(1170,690, this.vendeur.nbLivree).setFontSize(24);
 
         this.text = this.add.text(643, 70, this.formatTime(this.initialTime)).setFontSize(24);
 
@@ -274,16 +277,14 @@ class scene extends Phaser.Scene {
     FunctionTime(){
         this.temp -- ;
         //console.log(this.temp)
-        if(this.initialTime===175){
-            this.ZoneAmis = new ZoneAmis(this, this.player1, this.player2)
-        }
-        if(this.temp < 1020){
+        if(this.initialTime<175){
             this.ZoneAmis.FunctionUpdate()
         }
         if (this.initialTime===175){
             if (this.vendeurFLag){
 
             } else {
+                this.ZoneAmis = new ZoneAmis(this, this.player1, this.player2)
                 this.vendeur.vendeur.setVisible(true);
                 this.vendeur.vendeur.body.setEnable(true);
                 this.vendeurFLag=true;
@@ -302,6 +303,7 @@ class scene extends Phaser.Scene {
 
         this.text1.setText(this.player1.player.nbLivre);
         this.text2.setText(this.player2.player.nbLivre);
+        this.text3.setText(this.vendeur.nbLivree);
 
         if (this.vendeurFLag){
             this.vendeur.IaGesttion()

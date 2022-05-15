@@ -28,7 +28,7 @@ class Pnjia {
         });
         this.scene.physics.add.overlap(this.player1.player, this.Pnj, this.collectCollectible1,null,this);
         this.scene.physics.add.overlap(this.player2.player, this.Pnj, this.collectCollectible1,null,this);
-
+        this.Pnj.setDepth(2);
 
         for(var i = 0; i < this.Pnj.getChildren().length; i++) {
             this.Pnj.getChildren()[i].op = false;
