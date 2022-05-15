@@ -4,7 +4,7 @@ class Player2 {
         let me = this;
         this.scene = scene
         this.cameras = scene
-        this.player = this.scene.physics.add.sprite(50, 300, 'player2');
+        this.player = this.scene.physics.add.sprite(780, 200, 'player2');
         this.scene.anims.create({
             key: 'player2',
             frames: [
