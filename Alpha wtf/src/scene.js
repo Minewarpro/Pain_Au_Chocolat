@@ -217,6 +217,7 @@ class scene extends Phaser.Scene {
             this.player2.isBouncing = true;
             this.initSpeedX = me.player1.player.body.velocity.x;
             this.initSpeedY = me.player1.player.body.velocity.y;
+            this.Hitsound()
             this.bump.play()
             this.turn.play()
         }
@@ -228,6 +229,7 @@ class scene extends Phaser.Scene {
             this.player1.isBouncing = true;
             this.initSpeedX1 = me.player2.player.body.velocity.x;
             this.initSpeedY1 = me.player2.player.body.velocity.y;
+            this.Hitsound()
             this.bump.play()
             this.turn.play()
         }
@@ -239,6 +241,7 @@ class scene extends Phaser.Scene {
             player.setMaxVelocity(1000);
 
             if (player === this.player1.player){
+                this.Hitsound()
                 window.KeyEnable1 = false;
                 this.player1.isBouncing = true;
                 this.vendeur.tuchTiming1 = false;
@@ -248,6 +251,7 @@ class scene extends Phaser.Scene {
                     }
                 },10000);
             } else {
+                this.Hitsound()
                 window.KeyEnable2 = false;
                 this.player2.isBouncing = true;
                 this.vendeur.tuchTiming2=false;
