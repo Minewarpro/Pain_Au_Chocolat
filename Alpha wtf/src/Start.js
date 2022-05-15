@@ -5,6 +5,7 @@ class Start extends Phaser.Scene {
     }
 
     preload(){
+        this.load.image('ecranTitre', 'assets/images/VSMENU.png');
 
     }
 
@@ -16,7 +17,7 @@ class Start extends Phaser.Scene {
         window.startUi = true;
 
         //ECRAN TITRE
-        //this.ecranTitre = this.add.image(0, 0, 'ecranTitre').setOrigin(0, 0);
+        this.ecranTitre = this.add.image(0, 0, 'ecranTitre').setOrigin(0, 0);
 
 
         //SOUNDS
@@ -83,7 +84,7 @@ class Start extends Phaser.Scene {
         if (this.optionUi){
 
         } else {
-            //this.ecranTitre.setAlpha(1);
+            this.ecranTitre.setAlpha(1);
             this.buttonStart.setInteractive();
             window.Play.setAlpha(0.7);
             this.buttonOption.setInteractive();

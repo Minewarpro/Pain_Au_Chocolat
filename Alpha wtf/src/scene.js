@@ -36,6 +36,9 @@ class scene extends Phaser.Scene {
         this.load.image('J2-4', 'assets/animation/J1/J14.png')
         this.load.image('J2Idle', 'assets/animation/J1/IdleJ1.png')
 
+        //Zone ami
+        this.load.spritesheet('ami',  'assets/animation/zoneAmi/mainsVertes.png', {frameWidth: 128, frameHeight: 96})
+
 
         for(var i = 1; i < 6; i++) {
             this.load.image('Box'+i, 'assets/animation/box/Box'+i+'.png');
@@ -140,7 +143,7 @@ class scene extends Phaser.Scene {
 
         this.platforms = map.createStaticLayer('TreeBush', tilesetTreeBush);
 
-        this.initialTime = 180;
+        this.initialTime = 91;
 
         this.text1 = this.add.text(433, 80, this.player1.player.nbLivre).setFontSize(24);
 
