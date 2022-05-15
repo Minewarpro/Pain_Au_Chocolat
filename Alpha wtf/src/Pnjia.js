@@ -13,6 +13,10 @@ class Pnjia {
 
         const map = this.scene.make.tilemap({key: 'map'});
 
+        this.cercle1 = this.scene.physics.add.sprite(500, 300, 'cercle');
+        this.cercle2 = this.scene.physics.add.sprite(500, 300, 'cercle');
+        this.cercle3 = this.scene.physics.add.sprite(500, 300, 'cercle');
+
         this.Pnj = this.scene.physics.add.group({
             allowGravity: false,
             immovable: true
@@ -32,7 +36,7 @@ class Pnjia {
         while(this.nbPnjWant !== 3){
             this.alea = Phaser.Math.Between(0, this.Pnj.getChildren().length-1)
             if (this.Pnj.getChildren()[this.alea].op === false){
-                this.Pnj.getChildren()[this.alea].setTintFill(0xff0000);
+
                 this.nbPnjWant ++;
                 this.Pnj.getChildren()[this.alea].op = true;
             }
@@ -44,11 +48,34 @@ class Pnjia {
 
     }
 
+    UpdateIa1(){
+        var test =1;
+        for(var i = 0; i < this.Pnj.getChildren().length; i++) {
+            if(this.Pnj.getChildren()[i].op === true){
+
+                this.Pnj.getChildren()[i].name = test
+                if(this.Pnj.getChildren()[i].name===1){
+                    this.cercle1.x = this.Pnj.getChildren()[i].x
+                    this.cercle1.y = this.Pnj.getChildren()[i].y
+                }if(this.Pnj.getChildren()[i].name===2){
+                    this.cercle2.x = this.Pnj.getChildren()[i].x
+                    this.cercle2.y = this.Pnj.getChildren()[i].y
+                }if(this.Pnj.getChildren()[i].name===3){
+                    this.cercle3.x = this.Pnj.getChildren()[i].x
+                    this.cercle3.y = this.Pnj.getChildren()[i].y
+                }
+                console.log(this.Pnj.getChildren()[i].name);
+                test++;
+            }
+        }
+
+    }
+
     collectCollectible1(player, pnj){
 
         if(player.nbPain>0){
             if (pnj.op){
-                pnj.setTintFill(0xffffff);
+
                 this.newPnjToSell = Phaser.Math.Between(0, this.Pnj.getChildren().length-1)
 
                 if(this.flag){
@@ -60,23 +87,21 @@ class Pnjia {
                 }
 
                 if (this.Pnj.getChildren()[this.newPnjToSell] !== pnj && this.Pnj.getChildren()[this.newPnjToSell].op){
-                    console.log('op')
-                    this.Pnj.getChildren()[this.newPnjToSell].setTintFill(0xff0000);
+
                     this.Pnj.getChildren()[this.newPnjToSell].op = true;
-                    this.Pnj.getChildren()[this.newPnjToSell].positionPnjx = this.Pnj.getChildren()[this.newPnjToSell].x;
-                    this.Pnj.getChildren()[this.newPnjToSell].positionPnjy = this.Pnj.getChildren()[this.newPnjToSell].y;
+
                     this.Pnj.getChildren()[this.newPnjToSell].collidePnj = false;
                     console.log(player.nbPain)
                 }
 
                 while(!this.Pnj.getChildren()[this.newPnjToSell].op){
-                    console.log('boucle')
+
                     if (this.Pnj.getChildren()[this.newPnjToSell] !== pnj){
-                        console.log('op')
+
                         pnj.op = false;
-                        this.Pnj.getChildren()[this.newPnjToSell].setTintFill(0xff0000);
+
                         this.Pnj.getChildren()[this.newPnjToSell].op = true;
-                        console.log(player.nbPain)
+
                         this.flag = false;
                         break;
                     }

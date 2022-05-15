@@ -297,7 +297,7 @@ class Player {
 
     tir(){
         let me =this;
-        this.oeuf = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'spike');
+        this.oeuf = this.scene.physics.add.sprite(this.player.body.x, this.player.body.y, 'oeuf');
         this.oeuf.setDisplaySize(20,20);
         if (this.player.body.velocity.x===0 && this.player.body.velocity.y===0){
             this.oeuf.setVelocityY(400);

@@ -12,9 +12,10 @@ class scene extends Phaser.Scene {
         this.load.image('voiture', 'assets/images/voiture.png');
         this.load.image('beurre', 'assets/images/Beurre.png');
         this.load.image('chef', 'assets/images/Chef.png');
-        this.load.image('cercle1', 'assets/images/cercle1.png');
-        this.load.image('cercle2', 'assets/images/cercle2.png');
-        this.load.image('cercle3', 'assets/images/cercle3.png');
+        this.load.image('chef', 'assets/images/Chef.png');
+        this.load.image('cercle', 'assets/images/Cercle.png');
+        this.load.image('oeuf', 'assets/images/Oeuf.png');
+
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Level1.json');
@@ -184,8 +185,8 @@ class scene extends Phaser.Scene {
 
     }
     FunctionTime(){
-        this.temp -= 1;
-        console.log(this.temp)
+        this.temp -- ;
+        //console.log(this.temp)
         if(this.temp ===1020){
             this.ZoneAmis = new ZoneAmis(this, this.player1, this.player2)
         }
@@ -211,12 +212,9 @@ class scene extends Phaser.Scene {
             this.player2.move();
         }
 
-
+        this.pnj.UpdateIa1();
 
         //game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
-
-
-
 
     }
 }
