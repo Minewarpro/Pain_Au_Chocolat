@@ -24,13 +24,13 @@ class Item {
     }
 
     TakeItem(player, item) {
-        let powerup = 2;
+        let powerup = 1;
 
         //powerup = Phaser.Math.Between(1,5);
 
         switch (powerup) {
             case 1:
-                // this.player.Functionboost();
+                this.player2.Functionboost();
                 break;
             case 2:
                 player.maxStock += 1;

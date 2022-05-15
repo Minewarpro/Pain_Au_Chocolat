@@ -19,6 +19,7 @@ class Player {
         this.player.nbLivre = 0;
 
         this.player.action = 0;
+        this.piment=false;
 
         this.flaghaut=false;
         this.flagbas=false;
@@ -180,7 +181,11 @@ class Player {
                 // fais rien
                 break;
             case !this.qDown:
-                this.velocityPlayer = 300;
+                if (this.piment) {
+                    this.velocityPlayer = 600;
+                }else {
+                    this.velocityPlayer = 300;
+                }
                 this.player.setVelocityX(0);
                 this.flagleft=true;
                 break;
@@ -193,7 +198,11 @@ class Player {
                 // fais rien
                 break;
             case !this.dDown:
-                this.velocityPlayer = 300;
+                if (this.piment) {
+                    this.velocityPlayer = 600;
+                }else {
+                    this.velocityPlayer = 300;
+                }
                 this.player.setVelocityX(0);
                 this.flagright=true;
                 break;
@@ -206,7 +215,11 @@ class Player {
                 // fais rien
                 break;
             case !this.zDown:
-                this.velocityPlayer = 300;
+                if (this.piment) {
+                    this.velocityPlayer = 600;
+                }else {
+                    this.velocityPlayer = 300;
+                }
                 this.player.setVelocityY(0);
                 this.flaghaut=true;
                 break;
@@ -219,7 +232,12 @@ class Player {
                 // fais rien
                 break;
             case !this.sDown:
-                this.velocityPlayer = 300;
+                if (this.piment) {
+                    this.velocityPlayer = 600;
+                }else {
+                    this.velocityPlayer = 300;
+                }
+
                 this.player.setVelocityY(0);
                 this.flagbas=true;
                 break;
@@ -256,28 +274,44 @@ class Player {
                     this.Dash();
                     break;
                 case this.qDown && this.sDown:
-                    this.velocityPlayer = 200;
+                    if (this.piment) {
+                        this.velocityPlayer = 400;
+                    } else {
+                        this.velocityPlayer = 200;
+                    }
                     this.bas();
                     this.moveLeft();
                     this.flagleft=false;
                     this.flagbas=false;
                     break;
                 case this.dDown && this.sDown:
-                    this.velocityPlayer = 200;
+                    if (this.piment) {
+                        this.velocityPlayer = 400;
+                    }else {
+                        this.velocityPlayer = 200;
+                    }
                     this.bas();
                     this.moveRight();
                     this.flagbas=false;
                     this.flagright=false;
                     break;
                 case this.zDown && this.qDown:
-                    this.velocityPlayer = 200;
+                    if (this.piment) {
+                        this.velocityPlayer = 400;
+                    }else {
+                        this.velocityPlayer = 200;
+                    }
                     this.haut();
                     this.moveLeft()
                     this.flagleft=false;
                     this.flaghaut=false;
                     break;
                 case this.zDown && this.dDown:
-                    this.velocityPlayer = 200;
+                    if (this.piment) {
+                        this.velocityPlayer = 400;
+                    }else {
+                        this.velocityPlayer = 200;
+                    }
                     this.haut()
                     this.moveRight()
                     this.flaghaut=false;
@@ -312,6 +346,18 @@ class Player {
         this.moveLeftRelease()
 
 
+    }
+    Functionboost(){
+        let me =this;
+
+        this.velocityPlayer = 600;
+        this.player.setMaxVelocity(600, 600);
+        this.piment=true;
+        setTimeout(function(){
+            me.velocityPlayer = 300;
+            me.player.setMaxVelocity(300, 300);
+            me.piment=false;
+        },2000)
     }
     FonctionAction(){
         switch (this.player.action) {
