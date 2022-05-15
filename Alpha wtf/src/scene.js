@@ -290,10 +290,10 @@ class scene extends Phaser.Scene {
     FunctionTime(){
         this.temp -- ;
         //console.log(this.temp)
-        if(this.initialTime<175){
+        if(this.initialTime<90){
             this.ZoneAmis.FunctionUpdate()
         }
-        if (this.initialTime===175){
+        if (this.initialTime===90){
             if (this.vendeurFLag){
 
             } else {
