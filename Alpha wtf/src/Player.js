@@ -324,7 +324,15 @@ class Player {
             this.Reset = me.scene.time.addEvent({
                 delay: 5000,
                 callback: ()=>{
-                    me.beurre.destroy();
+                    me.scene.tweens.add({
+                        targets: me.beurre,
+                        duration:100,
+                        scale:0,
+                        onComplete: function(){
+                            me.beurre.destroy()
+                        }
+                    });
+
                 },
                 loop: false,
             })

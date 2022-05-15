@@ -24,9 +24,9 @@ class Item {
     }
 
     TakeItem(player, item) {
-        let powerup = 0;
+        let powerup = 4;
 
-        powerup = Phaser.Math.Between(1,5);
+        //powerup = Phaser.Math.Between(1,5);
 
         switch (powerup) {
             case 1:
