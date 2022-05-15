@@ -1,10 +1,11 @@
 class Collide {
 
-    constructor(scene, player, player2, pnj) {
+    constructor(scene, player, player2, pnj, vendeur) {
         this.scene = scene
         this.player = player
         this.player2 = player2
         this.pnj = pnj
+        this.vendeur = vendeur
 
         const map = this.scene.make.tilemap({key: 'map'});
 
@@ -16,9 +17,10 @@ class Collide {
             this.collideSprite = this.scene.physics.add.sprite(collide.x + (collide.width * 0.5), collide.y + (collide.height * 0.5)).setSize(collide.width, collide.height);
             this.collide.add(this.collideSprite)
         });
-        this.scene.physics.add.collider(this.player.player, this.collide);
-        this.scene.physics.add.collider(this.player2.player, this.collide);
+        this.scene.physics.add.collider(this.player.player, this.collide,this.tuch);
+        this.scene.physics.add.collider(this.player2.player, this.collide,this.tuch);
         this.scene.physics.add.collider(this.pnj.Pnj, this.collide,this.tuch);
+        this.scene.physics.add.collider(this.vendeur.vendeur, this.collide,this.tuch);
 
 
     }

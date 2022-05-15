@@ -48,7 +48,9 @@ class scene extends Phaser.Scene {
 
         this.pnj = new Pnjia(this, this.player1, this.player2)
 
-        this.collide = new Collide(this, this.player1, this.player2, this.pnj)
+        this.vendeur = new Vendeur(this, this.player1, this.player2)
+
+        this.collide = new Collide(this, this.player1, this.player2, this.pnj, this.vendeur)
 
         this.recupPain = new RecupPain(this, this.player1, this.player2)
 
@@ -57,6 +59,8 @@ class scene extends Phaser.Scene {
         this.voitures = new Voitures(this, this.player1, this.player2, this.pnj)
 
         this.playerCollider = this.physics.add.collider(this.player1.player, this.player2.player, this.tuch,null,this)
+        this.playerColliderVendeur1 = this.physics.add.collider(this.player1.player, this.vendeur.vendeur, this.tuchVendeur,null,this)
+        this.playerColliderVendeur2 = this.physics.add.collider(this.player2.player, this.vendeur.vendeur, this.tuchVendeur,null,this)
 
         this.platforms = map.createStaticLayer('TreeBush', tilesetTreeBush);
 
@@ -75,12 +79,12 @@ class scene extends Phaser.Scene {
             duration: 300,
 
             onUpdate: function(){
-                if(me.player1.isDashing){
+                if(me.player2.isBouncing){
                     me.player2.player.setVelocityX(me.initSpeedX * me.speed.speedDash)
                     me.player2.player.setVelocityY(me.initSpeedY * me.speed.speedDash)
-                } else if (me.player2.isDashing) {
-                    me.player1.player.setVelocityX(me.initSpeedX1 * me.speed.speedDash)
-                    me.player1.player.setVelocityY(me.initSpeedY1 * me.speed.speedDash)
+                } else if (me.player1.isBouncing) {
+                    me.player1.player.setVelocityX(me.initSpeedX * me.speed.speedDash)
+                    me.player1.player.setVelocityY(me.initSpeedY * me.speed.speedDash)
                 }
             },
             onComplete: function(){
@@ -95,6 +99,7 @@ class scene extends Phaser.Scene {
                 }
 
                 me.playerCollider = me.physics.add.collider(me.player1.player, me.player2.player, me.tuch,null,me)
+
             }
         });
         this.turn = this.tweens.add({
@@ -102,10 +107,10 @@ class scene extends Phaser.Scene {
             angleTurn: 1200,
             duration:300,
             onUpdate: function (){
-                if(me.player1.isDashing) {
+                if(me.player2.isBouncing) {
                     me.player2.player.setAngle(me.angle.angleTurn)
                 }
-                else if (me.player2.isDashing) {
+                else if (me.player1.isBouncing) {
                     me.player1.player.setAngle(me.angle.angleTurn)
                 }
             },
@@ -146,6 +151,29 @@ class scene extends Phaser.Scene {
         }
     }
 
+    tuchVendeur(player, vendeur){
+        let me = this;
+
+            player.setMaxVelocity(1000);
+
+            if (player === this.player1.player){
+                window.KeyEnable1 = false;
+                this.player1.isBouncing = true;
+                this.vendeur.tuchTiming=false;
+                setTimeout(function(){
+                    me.vendeur.tuchTiming=true;
+                },10000);
+            } else {
+                window.KeyEnable2 = false;
+                this.player2.isBouncing = true;
+            }
+            this.initSpeedX = me.vendeur.vendeur.body.velocity.x;
+            this.initSpeedY = me.vendeur.vendeur.body.velocity.y;
+        this.bump.play()
+        this.turn.play()
+
+    }
+
     update() {
 
         if (!this.isBouncing) {
@@ -155,6 +183,7 @@ class scene extends Phaser.Scene {
 
         this.ZoneAmis.FunctionUpdate()
 
+        this.vendeur.IaGesttion();
 
     }
 }
