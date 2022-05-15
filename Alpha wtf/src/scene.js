@@ -16,6 +16,10 @@ class scene extends Phaser.Scene {
         this.load.image('cercle', 'assets/images/Cercle.png');
         this.load.image('oeuf', 'assets/images/Oeuf.png');
 
+        for(var i = 1; i < 6; i++) {
+            this.load.image('Box'+i, 'assets/animation/box/Box'+i+'.png');
+        }
+
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Level1.json');
@@ -46,6 +50,7 @@ class scene extends Phaser.Scene {
 
         const tilesetBat = map.addTilesetImage('TileSetBat', 'tilesBat');
         this.platforms = map.createStaticLayer('Bat', tilesetBat);
+
 
         this.cursors = this.input.keyboard.createCursorKeys();
 

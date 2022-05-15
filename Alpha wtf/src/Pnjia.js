@@ -64,7 +64,6 @@ class Pnjia {
                     this.cercle3.x = this.Pnj.getChildren()[i].x
                     this.cercle3.y = this.Pnj.getChildren()[i].y
                 }
-                console.log(this.Pnj.getChildren()[i].name);
                 test++;
             }
         }

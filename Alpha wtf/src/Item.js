@@ -7,6 +7,22 @@ class Item {
         this.recupPain = recupPain;
         this.itemCoorX = 0;
 
+        this.Box = this.scene.add.sprite(500, 200, 'Box').setOrigin(0, 0);
+        this.Box.setDisplaySize(32,32);
+
+        this.scene.anims.create({
+            key: 'Box',
+            frames: [
+                {key: 'Box1'},
+                {key: 'Box2'},
+                {key: 'Box3'},
+                {key: 'Box4'},
+                {key: 'Box5'},
+            ],
+            frameRate: 5,
+            repeat: -1
+        });
+        this.Box.play('Box');
 
         const map = this.scene.make.tilemap({key: 'map'});
 
