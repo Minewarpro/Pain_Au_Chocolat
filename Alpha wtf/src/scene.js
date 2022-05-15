@@ -30,10 +30,29 @@ class scene extends Phaser.Scene {
         // Load FX pour particules etc
         this.load.image('farine', 'assets/images/farine.png');
 
+        // Load des son
+        this.load.audio('ambiance',['assets/son/ambiance-ville.wav']);
+        this.load.audio('BInventaire',['assets/son/Bonus-inventaire.wav']);
+        this.load.audio('BVitesse',['assets/son/Bonus-Vitesse.wav']);
+        this.load.audio('client',['assets/son/client.wav']);
+        this.load.audio('crash',['assets/son/crash.wav']);
+        this.load.audio('dash',['assets/son/dash2.wav']);
+        this.load.audio('glissade',['assets/son/glissade.wav']);
+        this.load.audio('pain',['assets/son/pain.wav']);
+        this.load.audio('musique',['assets/son/Musique.wav']);
+
     }
 
 
     create() {
+        //son
+        this.ambiance = this.sound.add('ambiance',{ loop: true, volume:1});
+        this.musique = this.sound.add('musique',{ loop: true, volume:0.6});
+        if(this.temp === this.temp){
+            this.ambiance.play()
+            this.musique.play()
+        }
+
 
         let me = this;
         this.temp = 0;
