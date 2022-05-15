@@ -53,6 +53,12 @@ class scene extends Phaser.Scene {
             this.musique.play()
         }
 
+        this.hit = this.sound.add('crash',{ loop: false, volume:1.2});
+
+        this.client = this.sound.add('client',{ loop: false, volume:1.2});
+
+        this.glissade = this.sound.add('glissade',{ loop: true, volume:1.2});
+
 
         let me = this;
         this.temp = 0;
@@ -174,6 +180,17 @@ class scene extends Phaser.Scene {
         this.cameras.main.startFollow(this.center)
 
     }
+
+    Hitsound(){
+        this.hit.play()
+    }
+    SoundClient(){
+        this.client.play()
+    }
+    SoundGlissade(){
+        this.glissade.play()
+    }
+
     onEvent ()
     {
         this.initialTime -= 1; // One second

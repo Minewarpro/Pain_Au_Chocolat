@@ -91,6 +91,7 @@ class Pnjia {
                     }else {
                         player.nbLivre ++;
                     }
+                    this.scene.SoundClient();
                     player.nbPain --;
                     this.flag = true;
                 }
