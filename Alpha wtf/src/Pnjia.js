@@ -8,11 +8,60 @@ class Pnjia {
         this.zoneAmis = zoneAmis
 
         this.nbPnjWant =0;
+        this.scene.anims.create({
+            key: 'PNJ1',
+            frames: [
+                {key: 'PNJ11'},
+                {key: 'PNJ12'},
+                {key: 'PNJ13'},
+                {key: 'PNJ14'},
+            ],
+            frameRate: 5,
+            repeat: -1
+        });
+
+        this.scene.anims.create({
+            key: 'PNJ2',
+            frames: [
+                {key: 'PNJ21'},
+                {key: 'PNJ22'},
+                {key: 'PNJ23'},
+                {key: 'PNJ24'},
+            ],
+            frameRate: 5,
+            repeat: -1
+        });
+
+        this.scene.anims.create({
+            key: 'PNJ3',
+            frames: [
+                {key: 'PNJ31'},
+                {key: 'PNJ32'},
+                {key: 'PNJ33'},
+                {key: 'PNJ34'},
+            ],
+            frameRate: 5,
+            repeat: -1
+        });
+
+        this.scene.anims.create({
+            key: 'PNJ4',
+            frames: [
+                {key: 'PNJ41'},
+                {key: 'PNJ42'},
+                {key: 'PNJ43'},
+                {key: 'PNJ44'},
+            ],
+            frameRate: 5,
+            repeat: -1
+        });
 
         this.flag=false;
         this.flip = true;
 
         const map = this.scene.make.tilemap({key: 'map'});
+
+        this.animation = ['PNJ1','PNJ2','PNJ3','PNJ4'];
 
         this.cercle1 = this.scene.physics.add.sprite(500, 300, 'cercle');
         this.cercle2 = this.scene.physics.add.sprite(500, 300, 'cercle');
@@ -32,6 +81,8 @@ class Pnjia {
 
         for(var i = 0; i < this.Pnj.getChildren().length; i++) {
             this.Pnj.getChildren()[i].op = false;
+            this.Pnj.getChildren()[i].play(this.animation[Phaser.Math.Between(0,3)]);
+
         }
 
         while(this.nbPnjWant !== 3){
@@ -81,7 +132,7 @@ class Pnjia {
                 if(this.flag){
 
                 } else {
-                    if (this.scene.temp<1020){
+                    if (this.scene.initialTime===90){
                         if (this.scene.ZoneAmis.Amis){
                             this.player1.player.nbLivre ++;
                             this.player2.player.nbLivre ++;
@@ -138,34 +189,42 @@ class Pnjia {
                         case 0:
                             me.Pnj.getChildren()[zeub].setVelocityX(100);
                             me.Pnj.getChildren()[zeub].setVelocityY(0);
+                            me.Pnj.getChildren()[zeub].setAngle(90);
                             break;
                         case 1:
                             me.Pnj.getChildren()[zeub].setVelocityX(-100);
                             me.Pnj.getChildren()[zeub].setVelocityY(0);
+                            me.Pnj.getChildren()[zeub].setAngle(-90);
                             break;
                         case 2:
                             me.Pnj.getChildren()[zeub].setVelocityX(0);
                             me.Pnj.getChildren()[zeub].setVelocityY(100);
+                            me.Pnj.getChildren()[zeub].setAngle(180);
                             break;
                         case 3:
                             me.Pnj.getChildren()[zeub].setVelocityX(0);
                             me.Pnj.getChildren()[zeub].setVelocityY(-100);
+                            me.Pnj.getChildren()[zeub].setAngle(0);
                             break;
                         case 4:
                             me.Pnj.getChildren()[zeub].setVelocityX(100);
                             me.Pnj.getChildren()[zeub].setVelocityY(100);
+                            me.Pnj.getChildren()[zeub].setAngle(135);
                             break;
                         case 5:
                             me.Pnj.getChildren()[zeub].setVelocityX(-100);
                             me.Pnj.getChildren()[zeub].setVelocityY(-100);
+                            me.Pnj.getChildren()[zeub].setAngle(-45);
                             break;
                         case 6:
                             me.Pnj.getChildren()[zeub].setVelocityX(-100);
                             me.Pnj.getChildren()[zeub].setVelocityY(100);
+                            me.Pnj.getChildren()[zeub].setAngle(-135);
                             break;
                         case 7:
                             me.Pnj.getChildren()[zeub].setVelocityX(100);
                             me.Pnj.getChildren()[zeub].setVelocityY(-100);
+                            me.Pnj.getChildren()[zeub].setAngle(135);
                             break;
                     }
                 },Phaser.Math.Between(0, 3000))

@@ -34,6 +34,21 @@ class scene extends Phaser.Scene {
             this.load.image('Box'+i, 'assets/animation/box/Box'+i+'.png');
         }
 
+        for(var i = 1; i < 5; i++) {
+            this.load.image('PNJ1'+i, 'assets/images/PNJ2ANIM_0'+i+'.png');
+        }
+
+        for(var i = 1; i < 5; i++) {
+            this.load.image('PNJ2'+i, 'assets/images/PNJ1Violet_0'+i+'.png');
+        }
+
+        for(var i = 1; i < 5; i++) {
+            this.load.image('PNJ3'+i, 'assets/images/PNJFemme_0'+i+'.png');
+        }
+
+        for(var i = 1; i < 5; i++) {
+            this.load.image('PNJ4'+i, 'assets/images/PNJF2_0'+i+'.png');
+        }
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Level1.json');
