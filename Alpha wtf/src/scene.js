@@ -154,12 +154,12 @@ class scene extends Phaser.Scene {
         this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.onEvent, callbackScope: this, loop: true });
 
         this.OeufIcon = this.add.sprite(940,80,'Oeuficon')
-        this.OeufIcon.setDisplaySize(20,20)
+        this.OeufIcon.setDisplaySize(40,40)
         this.OeufIcon.setVisible(false)
 
 
         this.BeurreIcon = this.physics.add.sprite(433-30,80,'BeurreIcon')
-        this.BeurreIcon.setDisplaySize(20,20)
+        this.BeurreIcon.setDisplaySize(40,40)
         this.BeurreIcon.setVisible(false)
 
         this.speed={
