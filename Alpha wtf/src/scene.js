@@ -17,6 +17,19 @@ class scene extends Phaser.Scene {
         this.load.image('cercle', 'assets/images/Cercle.png');
         this.load.image('oeuf', 'assets/images/Oeuf.png');
 
+        //J1
+        this.load.image('J1-1', 'assets/animation/J1/J11.png')
+        this.load.image('J1-1', 'assets/animation/J1/J12.png')
+        this.load.image('J1-1', 'assets/animation/J1/J13.png')
+        this.load.image('J1-1', 'assets/animation/J1/J14.png')
+
+        //J2
+        this.load.image('J1-1', 'assets/animation/J2/J21.png')
+        this.load.image('J1-1', 'assets/animation/J2/J22.png')
+        this.load.image('J1-1', 'assets/animation/J2/J23.png')
+        this.load.image('J1-1', 'assets/animation/J2/J24.png')
+
+
         for(var i = 1; i < 6; i++) {
             this.load.image('Box'+i, 'assets/animation/box/Box'+i+'.png');
         }
