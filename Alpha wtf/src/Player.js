@@ -15,9 +15,10 @@ class Player {
         this.player.name="player1"
 
         this.player.nbPain = 5;
+        this.player.maxStock = 5;
         this.player.nbLivre = 0;
 
-        this.action = 1;
+        this.player.action = 0;
 
         this.flaghaut=false;
         this.flagbas=false;
@@ -313,18 +314,18 @@ class Player {
 
     }
     FonctionAction(){
-        switch (this.action) {
+        switch (this.player.action) {
             case 1:
                 this.tir()
-                this.action = 0;
+                this.player.action = 0;
                 break;
             case 2:
                 console.log("flaque")
-                this.action = 0;
+                this.player.action = 0;
                 break;
             case 3:
                 console.log("tape")
-                this.action = 0;
+                this.player.action = 0;
                 break;
             default:
                 console.log("rien")

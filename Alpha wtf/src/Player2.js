@@ -15,9 +15,10 @@ class Player2 {
         this.player.name="player2"
 
         this.player.nbPain = 5;
+        this.player.maxStock = 5;
         this.player.nbLivre = 0;
 
-        this.action = 1;
+        this.player.action = 0;
 
         this.flaghaut = false;
         this.flagbas = false;
@@ -312,19 +313,19 @@ class Player2 {
 
     FonctionAction(){
         let me = this;
-        console.log(this.action)
-        switch (this.action) {
+        console.log(this.player.action)
+        switch (this.player.action) {
             case 1:
                 me.tir()
-                this.action = 0;
+                this.player.action = 0;
                 break;
             case 2:
                 me.scene.Flaque2()
-                this.action = 0;
+                this.player.action = 0;
                 break;
             case 3:
                 console.log("tape J2")
-                this.action = 0;
+                this.player.action = 0;
                 break;
             default:
                 console.log("rien J2")
