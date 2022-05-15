@@ -100,6 +100,7 @@ class scene extends Phaser.Scene {
         this.temp = 0;
         this.temp = 1800;
         this.vendeurFLag=false;
+        this.Pauseflag = false;
 
         this.flag=false;
         const map = this.make.tilemap({key: 'map'});
@@ -330,6 +331,20 @@ class scene extends Phaser.Scene {
         }
     }
     update() {
+        if (this.player1.Pdown){
+
+            if (this.Pauseflag){
+
+            }else {
+                this.scene.pause();
+                this.scene.launch('pause');
+                this.Pauseflag = true;
+            }
+        }
+        if (window.change) {
+            this.player1.initKeyboard();
+            window.change=false;
+        }
 
         this.text1.setText(this.player1.player.nbLivre);
         this.text2.setText(this.player2.player.nbLivre);
