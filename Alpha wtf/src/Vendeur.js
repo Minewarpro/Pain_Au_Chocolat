@@ -13,7 +13,7 @@ class Vendeur{
         this.vendeur.setCollideWorldBounds(true);
         this.vendeur.setImmovable(true)
 
-        this.tuchTiming = true;
+        this.tuchTiming1 = true;
         this.tuchTiming2 = true;
 
         this.flip = false;
@@ -26,7 +26,7 @@ class Vendeur{
 
             this.dist = Phaser.Math.Distance.BetweenPoints(this.player1.player, this.vendeur);
 
-            if (this.dist <= 200 && this.tuchTiming) {
+            if (this.dist <= 200 && this.tuchTiming1) {
                 this.scene.physics.moveTo(
                     me.vendeur,
                     me.player1.player.body.x,

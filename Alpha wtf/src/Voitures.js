@@ -7,7 +7,7 @@ class Voitures{
         this.player1 = player1;
         this.player2 = player2;
         this.pnj = pnj;
-        this.voiture1 = this.scene.physics.add.sprite(290, 0, 'voitureTurbo');
+        this.voiture1 = this.scene.physics.add.sprite(320, 0, 'voitureTurbo');
         this.voiture1.body.setSize(250,460)
         this.voiture1.body.setOffset(30,150)
         me.voiture1.setAngle(180);
@@ -16,7 +16,7 @@ class Voitures{
         this.scene.physics.add.collider(this.player2.player, this.voiture1, this.tuch2, null, this);
         this.scene.physics.add.collider(this.player1.player, this.voiture1, this.tuch1, null, this);
 
-        this.voiture2 = this.scene.physics.add.sprite(1380, 350, 'voiture');
+        this.voiture2 = this.scene.physics.add.sprite(1380, 380, 'voiture');
         me.voiture2.body.setSize(460,250)
         me.voiture2.body.setOffset(-60,110)
         me.voiture2.setAngle(-90);
@@ -30,7 +30,7 @@ class Voitures{
 
         this.tween1 = this.scene.tweens.add({
             targets: this.voiture1,
-            y: 540,
+            y: 580,
             duration: 1000,
             ease: 'Linear',
             onComplete: function () {
@@ -43,7 +43,7 @@ class Voitures{
 
         this.tween2 = me.scene.tweens.add({
             targets: me.voiture1,
-            x: 640,
+            x: 680,
             duration: 1000,
             ease: 'Linear',
             onComplete: function () {
@@ -63,7 +63,7 @@ class Voitures{
             onComplete: function () {
 
                 setTimeout(function(){
-                    me.voiture1.x = 290;
+                    me.voiture1.x = 320;
                     me.voiture1.y = 0;
                     me.tween1.play()
                 },9000)
@@ -75,7 +75,7 @@ class Voitures{
 
         this.tween4 = this.scene.tweens.add({
             targets: this.voiture2,
-            x: 1000,
+            x: 1030,
             duration: 2000,
             ease: 'Linear',
             onComplete: function () {
@@ -97,7 +97,7 @@ class Voitures{
                 me.voiture2.body.setOffset(-60, 110)
                 setTimeout(function () {
                     me.voiture2.x = 1380;
-                    me.voiture2.y = 350;
+                    me.voiture2.y = 380;
                     me.tween4.play()
                 }, 3000)
             }

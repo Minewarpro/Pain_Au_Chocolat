@@ -1,10 +1,11 @@
 class Pnjia {
 
-    constructor(scene, player1, player2) {
+    constructor(scene, player1, player2, zoneAmis) {
         let me = this;
         this.scene = scene
         this.player1 = player1
         this.player2 = player2
+        this.zoneAmis = zoneAmis
 
         this.nbPnjWant =0;
 
@@ -80,8 +81,17 @@ class Pnjia {
                 if(this.flag){
 
                 } else {
+                    if (this.scene.temp<1020){
+                        if (this.scene.ZoneAmis.Amis){
+                            this.player1.player.nbLivre ++;
+                            this.player2.player.nbLivre ++;
+                        } else {
+                            player.nbLivre ++;
+                        }
+                    }else {
+                        player.nbLivre ++;
+                    }
                     player.nbPain --;
-                    player.nbLivre ++;
                     this.flag = true;
                 }
 

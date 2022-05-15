@@ -6,7 +6,7 @@ class scene extends Phaser.Scene {
         // At last image must be loaded with its JSON
         this.load.atlas('player', 'assets/images/kenney_player.png', 'assets/images/kenney_player_atlas.json');
         this.load.image('pnj', 'assets/images/pnj.png');
-        this.load.image('tilesSol', 'assets/tilesets/TileSet_V2.png');
+        this.load.image('tilesSol', 'assets/tilesets/objet.png');
         this.load.image('tilesBat', 'assets/tilesets/TileSetBat.png');
         this.load.image('voitureTurbo', 'assets/images/voitureturbo.png');
         this.load.image('voiture', 'assets/images/voiture.png');
@@ -38,11 +38,12 @@ class scene extends Phaser.Scene {
         let me = this;
         this.temp = 0;
         this.temp = 1800;
+        this.vendeurFLag=false;
 
         this.flag=false;
         const map = this.make.tilemap({key: 'map'});
 
-        const tilesetSol = map.addTilesetImage('TileSet_V2', 'tilesSol');
+        const tilesetSol = map.addTilesetImage('TilesetObjet', 'tilesSol');
         this.platforms = map.createStaticLayer('Sol', tilesetSol);
 
         const tilesetTreeBush = map.addTilesetImage('TileSetTreeBush', 'tilesTreeBush');
@@ -61,6 +62,8 @@ class scene extends Phaser.Scene {
         this.pnj = new Pnjia(this, this.player1, this.player2)
 
         this.vendeur = new Vendeur(this, this.player1, this.player2)
+        this.vendeur.vendeur.setVisible(false);
+        this.vendeur.vendeur.body.setEnable(false);
 
         this.collide = new Collide(this, this.player1, this.player2, this.pnj, this.vendeur)
 
@@ -75,6 +78,17 @@ class scene extends Phaser.Scene {
         this.playerColliderVendeur2 = this.physics.add.collider(this.player2.player, this.vendeur.vendeur, this.tuchVendeur,null,this)
 
         this.platforms = map.createStaticLayer('TreeBush', tilesetTreeBush);
+
+        this.initialTime = 180;
+
+        this.text1 = this.add.text(433, 80, this.player1.player.nbLivre).setFontSize(24);
+
+        this.text2 = this.add.text(880, 80, this.player2.player.nbLivre).setFontSize(24);
+
+        this.text = this.add.text(643, 70, this.formatTime(this.initialTime)).setFontSize(24);
+
+        // Each 1000 ms call onEvent
+        this.timedEvent = this.time.addEvent({ delay: 1000, callback: this.onEvent, callbackScope: this, loop: true });
 
         this.speed={
             speedDash:3,
@@ -94,7 +108,8 @@ class scene extends Phaser.Scene {
                 if(me.player2.isBouncing){
                     me.player2.player.setVelocityX(me.initSpeedX * me.speed.speedDash)
                     me.player2.player.setVelocityY(me.initSpeedY * me.speed.speedDash)
-                } else if (me.player1.isBouncing) {
+                }
+                if (me.player1.isBouncing) {
                     me.player1.player.setVelocityX(me.initSpeedX * me.speed.speedDash)
                     me.player1.player.setVelocityY(me.initSpeedY * me.speed.speedDash)
                 }
@@ -104,7 +119,8 @@ class scene extends Phaser.Scene {
                     me.player2.isBouncing = false;
                     me.player2.player.setMaxVelocity(300);
                     window.KeyEnable2 = true;
-                } else if (me.player1.isBouncing) {
+                }
+                if (me.player1.isBouncing) {
                     me.player1.isBouncing = false;
                     me.player1.player.setMaxVelocity(300);
                     window.KeyEnable1 = true;
@@ -135,6 +151,24 @@ class scene extends Phaser.Scene {
         this.bump.pause();
         this.turn.pause();
 
+        this.center = this.physics.add.sprite(671,391);
+        this.cameras.main.startFollow(this.center)
+
+    }
+    onEvent ()
+    {
+        this.initialTime -= 1; // One second
+        this.text.setText(this.formatTime(this.initialTime));
+    }
+    formatTime(seconds){
+        // Minutes
+        var minutes = Math.floor(seconds/60);
+        // Seconds
+        var partInSeconds = seconds%60;
+        // Adds left zeros to seconds
+        partInSeconds = partInSeconds.toString().padStart(2,'0');
+        // Returns formated time
+        return `${minutes}:${partInSeconds}`;
     }
 
     tuch(){
@@ -171,16 +205,20 @@ class scene extends Phaser.Scene {
             if (player === this.player1.player){
                 window.KeyEnable1 = false;
                 this.player1.isBouncing = true;
-                this.vendeur.tuchTiming=false;
+                this.vendeur.tuchTiming1 = false;
                 setTimeout(function(){
-                    me.vendeur.tuchTiming=true;
+                    if (me.vendeur.tuchTiming1===false) {
+                        me.vendeur.tuchTiming1 = true;
+                    }
                 },10000);
             } else {
                 window.KeyEnable2 = false;
                 this.player2.isBouncing = true;
                 this.vendeur.tuchTiming2=false;
                 setTimeout(function(){
-                    me.vendeur.tuchTiming2=true;
+                    if (me.vendeur.tuchTiming2===false){
+                        me.vendeur.tuchTiming2=true;
+                    }
                 },10000);
             }
             this.initSpeedX = me.vendeur.vendeur.body.velocity.x;
@@ -192,29 +230,53 @@ class scene extends Phaser.Scene {
     FunctionTime(){
         this.temp -- ;
         //console.log(this.temp)
-        if(this.temp ===1020){
+        if(this.initialTime===175){
             this.ZoneAmis = new ZoneAmis(this, this.player1, this.player2)
         }
         if(this.temp < 1020){
             this.ZoneAmis.FunctionUpdate()
         }
-        if(this.temp <= 1800/2){
-            this.vendeur.IaGesttion();
-            this.vendeur.vendeur.setVisible(true);
-            this.vendeur.vendeur.body.setEnable(true);
+        if (this.initialTime===175){
+            if (this.vendeurFLag){
 
-        }else{
-            this.vendeur.vendeur.setVisible(false);
-            this.vendeur.vendeur.body.setEnable(false);
+            } else {
+                this.vendeur.vendeur.setVisible(true);
+                this.vendeur.vendeur.body.setEnable(true);
+                this.vendeurFLag=true;
+                this.vendeur.vendeur.body.x = 600
+                this.vendeur.vendeur.body.y = 550
+                this.tweens.add({
+                    targets: this.vendeur.vendeur,
+                    y: 300,
+                    duration: 1000,
+                    ease: 'Linear',
+                });
+            }
         }
     }
     update() {
 
+        this.text1.setText(this.player1.player.nbLivre);
+        this.text2.setText(this.player2.player.nbLivre);
+
+        if (this.vendeurFLag){
+            this.vendeur.IaGesttion()
+        }
         this.FunctionTime()
 
         if (!this.isBouncing) {
             this.player1.move();
             this.player2.move();
+        }
+
+        if (this.initialTime===90){
+            if (this.vendeurFLag){
+
+            } else {
+                this.vendeurFLag=true;
+                this.vendeur.vendeur.body.x = 640
+                this.vendeur.vendeur.body.y = 800
+            }
         }
 
         this.pnj.UpdateIa1();

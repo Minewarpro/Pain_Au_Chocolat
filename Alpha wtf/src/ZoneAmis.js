@@ -4,9 +4,23 @@ class ZoneAmis {
         this.scene = scene
         this.player1 = player1
         this.player2 = player2
+        let me = this;
 
         this.friend = false;
         this.compteur = 0;
+        this.Amis=false;
+
+        this.nbLivree = this.player2.player.nbLivre + this.player1.player.nbLivre;
+
+        this.Reset = this.scene.time.addEvent({
+            delay: 2000,
+            callback: ()=>{
+                me.nbLivree++;
+                console.log( me.nbLivree)
+            },
+            loop: true,
+        })
+
 
         const map = this.scene.make.tilemap({key: 'map'});
 
@@ -22,6 +36,7 @@ class ZoneAmis {
         this.scene.physics.add.overlap(this.player2.player, this.zoneAmis);
 
 
+
     }
 
     FunctionUpdate(){
@@ -32,7 +47,9 @@ class ZoneAmis {
         if(this.friend === true){
             this.compteur += 1;
             if(this.compteur === 500){
-
+                this.Amis=true;
+                this.player1.player.nbLivre = this.player1.player.nbLivre + this.player2.player.nbLivre;
+                this.player2.player.nbLivre = this.player1.player.nbLivre + this.player2.player.nbLivre;
             }
         }else{
             this.compteur = 0;
