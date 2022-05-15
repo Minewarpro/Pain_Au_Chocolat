@@ -55,7 +55,7 @@ class Vendeur{
         } else {
             this.flip = true;
             setTimeout(function(){
- 
+
                 this.hasard = Phaser.Math.Between(0, 7)
                 switch (this.hasard) {
                     case 0:

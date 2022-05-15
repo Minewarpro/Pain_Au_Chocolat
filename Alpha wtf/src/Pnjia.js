@@ -18,7 +18,7 @@ class Pnjia {
             immovable: true
         });
         map.getObjectLayer('Pnj').objects.forEach((Pnj) => {
-            const FlameSprite = this.Pnj.create(Pnj.x, Pnj.y, 'pnj');
+            const FlameSprite = this.Pnj.create(Pnj.x, Pnj.y, 'pnj').setDisplaySize(32,32);
 
         });
         this.scene.physics.add.overlap(this.player1.player, this.Pnj, this.collectCollectible1,null,this);
@@ -60,23 +60,23 @@ class Pnjia {
                 }
 
                 if (this.Pnj.getChildren()[this.newPnjToSell] !== pnj && this.Pnj.getChildren()[this.newPnjToSell].op){
-
+                    console.log('op')
                     this.Pnj.getChildren()[this.newPnjToSell].setTintFill(0xff0000);
                     this.Pnj.getChildren()[this.newPnjToSell].op = true;
                     this.Pnj.getChildren()[this.newPnjToSell].positionPnjx = this.Pnj.getChildren()[this.newPnjToSell].x;
                     this.Pnj.getChildren()[this.newPnjToSell].positionPnjy = this.Pnj.getChildren()[this.newPnjToSell].y;
                     this.Pnj.getChildren()[this.newPnjToSell].collidePnj = false;
-
+                    console.log(player.nbPain)
                 }
 
                 while(!this.Pnj.getChildren()[this.newPnjToSell].op){
-
+                    console.log('boucle')
                     if (this.Pnj.getChildren()[this.newPnjToSell] !== pnj){
-
+                        console.log('op')
                         pnj.op = false;
                         this.Pnj.getChildren()[this.newPnjToSell].setTintFill(0xff0000);
                         this.Pnj.getChildren()[this.newPnjToSell].op = true;
-
+                        console.log(player.nbPain)
                         this.flag = false;
                         break;
                     }
